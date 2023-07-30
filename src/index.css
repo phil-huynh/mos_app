@@ -124,7 +124,7 @@ button:focus-visible {
   border: solid 1px black;
 }
 
-.contact-form {
+.email-form {
   display: flex;
   flex-direction: row;
   justify-content: center;
