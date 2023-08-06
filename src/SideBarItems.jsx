@@ -32,7 +32,15 @@ export default function SideBarItems({handleSideBar}) {
   ]
   return (
     <Box
-      sx={{border: "solid black 1px", width: 250}}
+      sx={{
+        width: 250,
+        padding: "35px",
+        border: "1px solid rgba(255, 255, 255, .15)",
+        borderRadius: "20px",
+        backgroundColor: "rgba(255, 255, 255, 0.15)",
+        boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.15)",
+        backdropFilter: "blur(15px)",
+      }}
       role="presentation"
       // onClick={toggleDrawer(anchor, false)}
       // onKeyDown={toggleDrawer(anchor, false)}

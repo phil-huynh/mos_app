@@ -14,6 +14,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Drawer from '@mui/material/Drawer';
 import SideBarItems from './SideBarItems';
+import { Diversity1 } from '@mui/icons-material';
 
 
 function App({blogs, offers, affiliates}) {
@@ -42,34 +43,32 @@ function App({blogs, offers, affiliates}) {
               <SideBarItems handleSideBar={handleSideBar}/>
             </Drawer>
         </div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about">
-            <Route index element={<About />} />
-          </Route>
-          <Route path="blogs">
-            <Route index element={<BlogsList blogs={blogs}/>} />
-          </Route>
-          <Route path="offerings">
-            <Route index element={<Offerings offers={offers}/>} />
-          </Route>
-          <Route path="speaking">
-            <Route index element={<Speaking />} />
-          </Route>
-          <Route path="press">
-            <Route index element={<Press />} />
-          </Route>
-          <Route path="contact">
-            <Route index element={<Contact />} />
-          </Route>
-          <Route path="free">
-            <Route index element={<Free />} />
-          </Route>
-        </Routes>
-        <Affiliates
-          affiliates={affiliates}
-          matches={matches}
-        />
+        <div className='contentsContainer'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="about">
+              <Route index element={<About />} />
+            </Route>
+            <Route path="blogs">
+              <Route index element={<BlogsList blogs={blogs}/>} />
+            </Route>
+            <Route path="offerings">
+              <Route index element={<Offerings offers={offers}/>} />
+            </Route>
+            <Route path="speaking">
+              <Route index element={<Speaking />} />
+            </Route>
+            <Route path="press">
+              <Route index element={<Press />} />
+            </Route>
+            <Route path="contact">
+              <Route index element={<Contact />} />
+            </Route>
+            <Route path="free">
+              <Route index element={<Free />} />
+            </Route>
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   </>

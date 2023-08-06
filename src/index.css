@@ -23,11 +23,16 @@ a:hover {
   color: #535bf2;
 }
 
+h1, h2, h3 {
+  color: white;
+  z-index: 2;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg?cs=srgb&dl=pexels-bella-white-635279.jpg&fm=jpg");
+  background-image: url("./assets/mos_background.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -35,8 +40,12 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.8rem;
   line-height: 1.1;
+}
+
+h3 {
+  font-size: 2.2rem;
 }
 
 button {
@@ -57,9 +66,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.container {
+  position: relative;
+}
+
 .navContainer {
   height: 5rem;
   width: 100%;
+
 }
 
 .navbar {
@@ -74,13 +88,12 @@ button:focus-visible {
     55%,
     rgb(244, 175, 187)
   );
-  position: fixed;
 }
 
 .nav-list {
   display: flex;
   flex-direction: row;
-  background: url("https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg?cs=srgb&dl=pexels-bella-white-635279.jpg&fm=jpg");
+  background: url("./assets/mos_background.jpg");
   background-size: 100vw auto;
   background-position: center;
 
@@ -101,7 +114,28 @@ button:focus-visible {
 }
 
 .home,
-.about,
+.about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  color: white;
+  font-weight: 700;
+  font-size: 1.7rem;
+  width: 70%;
+  margin: 3rem;
+  z-index: 2;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+}
+
 .speaking,
 .press,
 .contact {
@@ -183,3 +217,31 @@ input {
   max-height: 5rem;
   width: 15rem
 }
+
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.contentsContainer {
+  position: relative;
+  background-image: url("./assets/mos_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* .contentsContainer:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(51, 51, 51);
+  opacity: .6;
+  z-index: 1;
+  } */
