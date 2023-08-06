@@ -15,7 +15,6 @@ export default function Offerings({offers}) {
             xl={2}
             key={offer.id}
             sx={{
-              border: "red solid 2px",
               display: "flex",
               justifyContent: "center"
             }}

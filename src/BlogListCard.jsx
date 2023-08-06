@@ -12,7 +12,25 @@ export default function BlogListCard({title, description, text}) {
   const className = showBlogText ? 'blog-card blog-open' : 'blog-card'
 
   return (
-    <Card className={className} sx={{ minWidth: 275, m: 2, p: 2, boxShadow: 5 }} raised>
+    <Card className={className}
+      sx={{
+        minWidth: 275,
+        m: 2,
+        p: 2,
+        boxShadow: 5,
+        color: "white",
+        fontWeight: "700",
+        fontSize: "1.7rem",
+        width: "70%",
+        margin: "3rem",
+        zIndex: "2",
+        padding: "35px",
+        border: "1px solid rgba(139, 139, 139, 0.50)",
+        borderRadius: "20px",
+        backgroundColor: "rgba(16, 16, 16, 0.5)",
+        // boxShadow: "0 0 10px 1px rgba(139, 139, 139, 0.5)",
+        backdropFilter: "blur(10px);",
+      }} raised >
       <CardContent>
         <Typography color="text.secondary" variant="h5" gutterBottom>
           {title}

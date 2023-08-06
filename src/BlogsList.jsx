@@ -14,9 +14,9 @@ export default function BlogList ({blogs}) {
             lg={3}
             key={blog.id}
             sx={{
-              border: "red solid 2px",
               display: "flex",
-              justifyContent: "center"
+              justifyContent: "center",
+
             }}
           >
             <BlogListCard

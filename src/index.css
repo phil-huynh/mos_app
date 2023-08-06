@@ -129,11 +129,12 @@ section {
   margin: 3rem;
   z-index: 2;
   padding: 35px;
-  border: 1px solid rgba(255, 255, 255, .15);
+  border: 1px solid rgba(139, 139, 139, 0.50);
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(15px);
+  background-color: rgba(16, 16, 16, 0.5);
+  box-shadow: 5;
+  /* box-shadow: 0 0 10px 1px rgba(139, 139, 139, 0.5); */
+  /* backdrop-filter: blur(15px); */
 }
 
 .speaking,
@@ -197,9 +198,20 @@ input {
 }
 
 .blog-card {
-  min-height: 10.8rem;
-  max-height: 10.8rem;
-  width: 18rem;
+  min-height: 15rem;
+  max-height: 15rem;
+  /* color: white;
+  font-weight: 700;
+  font-size: 1.7rem;
+  width: 70%;
+  margin: 3rem;
+  z-index: 2;
+  padding: 35px;
+  border: 1px solid rgba(139, 139, 139, 0.50);
+  border-radius: 20px;
+  background-color: rgba(139, 139, 139, 0.50);
+  box-shadow: 0 0 10px 1px rgba(139, 139, 139, 0.5);
+  backdrop-filter: blur(15px); */
 }
 
 .blog-open {
