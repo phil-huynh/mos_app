@@ -29,16 +29,19 @@ function App({blogs, offers, affiliates}) {
   }, [matches])
 
   return (
+  <>
     <BrowserRouter>
       <div className="container">
-        <Nav matches={matches} handleSideBar={handleSideBar}/>
-        <Drawer
-          anchor="left"
-          open={sidebar}
-          onClose={handleSideBar}
-        >
-          <SideBarItems handleSideBar={handleSideBar}/>
-        </Drawer>
+        <div className='navContainer'>
+            <Nav matches={matches} handleSideBar={handleSideBar}/>
+            <Drawer
+              anchor="left"
+              open={sidebar}
+              onClose={handleSideBar}
+            >
+              <SideBarItems handleSideBar={handleSideBar}/>
+            </Drawer>
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="about">
@@ -63,8 +66,13 @@ function App({blogs, offers, affiliates}) {
             <Route index element={<Free />} />
           </Route>
         </Routes>
+        <Affiliates
+          affiliates={affiliates}
+          matches={matches}
+        />
       </div>
     </BrowserRouter>
+  </>
   );
 }
 

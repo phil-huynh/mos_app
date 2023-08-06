@@ -30,6 +30,7 @@ body {
   background-image: url("https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg?cs=srgb&dl=pexels-bella-white-635279.jpg&fm=jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 
 }
 
@@ -56,13 +57,24 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.navbar {
+.navContainer {
   height: 5rem;
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, rgb(244, 175, 187), 25%, rgb(214, 97, 116), 55%,  rgb(244, 175, 187));
-  margin-bottom: 5%;
-
+  background: linear-gradient(
+    to right,
+    rgb(244, 175, 187),
+    25%,
+    rgb(214, 97, 116),
+    55%,
+    rgb(244, 175, 187)
+  );
+  position: fixed;
 }
 
 .nav-list {
@@ -138,6 +150,7 @@ input {
   line-height: 1.8em;
   font-size: 2rem;
 }
+
 
 .form-label {
   margin-left: 3rem;

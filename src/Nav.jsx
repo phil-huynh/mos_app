@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function Nav({matches, handleSideBar}) {
   return (
     <div className="navbar">
       {matches ?
+      <>
         <ul className="nav-list">
           <li className="nav-item">
             <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
@@ -31,14 +33,25 @@ export default function Nav({matches, handleSideBar}) {
             <NavLink className="nav-link" to="/free">Free!</NavLink>
           </li>
         </ul>
+          <ShoppingCartIcon sx={{
+            color: "white",
+            fontSize: "2.5rem",
+          }}/>
+        </>
         :
-        <MenuIcon sx={{
-          color: "white",
-          fontSize: "2.5rem",
-          border: "white solid 2px",
-          borderRadius: "10px",
-          margin: "2rem"
-        }} onClick={handleSideBar}/>
+        <>
+          <MenuIcon sx={{
+            color: "white",
+            fontSize: "2.5rem",
+            border: "white solid 2px",
+            borderRadius: "10px",
+            margin: "2rem"
+          }} onClick={handleSideBar}/>
+          <ShoppingCartIcon sx={{
+            color: "white",
+            fontSize: "2.5rem",
+          }}/>
+        </>
       }
     </div>
   )

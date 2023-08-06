@@ -5,9 +5,20 @@ export default function BlogList ({blogs}) {
   console.log(blogs)
   return (
     <>
-      <Grid container spacing={6} className='list-container'>
+      <Grid container className='list-container'>
         {blogs.map(blog => (
-          <Grid item xs={12} sm={6} md={4} lg={2.6} key={blog.id}>
+          <Grid item
+            xs={12}
+            sm={6}
+            md={6}
+            lg={3}
+            key={blog.id}
+            sx={{
+              border: "red solid 2px",
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
             <BlogListCard
               title={blog.title}
               description={blog.description}

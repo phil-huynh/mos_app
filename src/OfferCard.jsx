@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 export default function OfferCard({title, details, price}) {
 
   return (
-    <Card className='offer-card' sx={{ minWidth: 275, m: 2, p: 2, boxShadow: 5 }} raised>
+    <Card className='offer-card' sx={{ minWidth: 275, p: 2, boxShadow: 5 }} raised>
       <CardContent>
         <Typography variant="h5" gutterBottom>
           {title}

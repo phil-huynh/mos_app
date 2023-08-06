@@ -44,54 +44,78 @@ const offers = [
     details: "Going to get the shit out of your ears",
     price: 35
   },
+  {
+    id: 5,
+    title: "Biweekly Group Class",
+    details: "Breathing excercises and yoga positions in group setting",
+    price: 40
+  },
+  {
+    id: 6,
+    title: "5 Private Lessons",
+    details: "One on one private instruction",
+    price: 200
+  },
+  {
+    id: 7,
+    title: "10 Private Lessons",
+    details: "One on one private instruction",
+    price: 375
+  },
+  {
+    id: 8,
+    title: "Ear Coning",
+    details: "Going to get the shit out of your ears",
+    price: 35
+  },
 ]
 
 
 const affiliates = [
   {
     id: 1,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 2,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 3,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 4,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 5,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 6,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 7,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 8,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
   {
     id: 9,
-    company: "company name",
-    product: "product"
+    company: "company",
+    product: "we sell this product"
   },
 
 ]
