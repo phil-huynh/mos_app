@@ -1,20 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react'
-import Nav from './Nav';
-import Home from './Home'
-import About from './About'
-import BlogsList from './BlogsList'
-import Offerings from './Offerings'
-import Speaking from './Speaking'
-import Press from './Press'
-import Affiliates from './Affiliates';
-import Contact from './Contact';
-import Free from './Free';
+import Nav from './navComponents/Nav';
+import Home from './info/Home'
+import About from './info/About'
+import BlogsList from './blogs/BlogsList'
+import Offerings from './offerings/Offerings'
+import Speaking from './upcoming/Speaking'
+import Press from './upcoming/Press'
+import Affiliates from './affiliates/Affiliates';
+import Contact from './contact/Contact';
+import Free from './contact/Free';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Drawer from '@mui/material/Drawer';
-import SideBarItems from './SideBarItems';
-import { Diversity1 } from '@mui/icons-material';
+import SideBarItems from './navComponents/SideBarItems';
 
 
 function App({blogs, offers, affiliates}) {

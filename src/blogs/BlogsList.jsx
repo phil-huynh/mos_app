@@ -8,10 +8,9 @@ export default function BlogList ({blogs}) {
       <Grid container className='list-container'>
         {blogs.map(blog => (
           <Grid item
-            xs={12}
-            sm={6}
+            sm={12}
             md={6}
-            lg={3}
+            lg={4}
             key={blog.id}
             sx={{
               display: "flex",

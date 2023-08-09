@@ -20,7 +20,7 @@ export default function Nav({matches, handleSideBar}) {
           <li className="nav-item">
             <NavLink className="nav-link" to="/offerings">Offerings</NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink className="nav-link" to="/speaking">Speaking</NavLink>
           </li>
           <li className="nav-item">
@@ -28,14 +28,15 @@ export default function Nav({matches, handleSideBar}) {
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/contact">Contact</NavLink>
-          </li>
+          </li> */}
           <li className="nav-item">
             <NavLink className="nav-link" to="/free">Free!</NavLink>
           </li>
         </ul>
           <ShoppingCartIcon sx={{
             color: "white",
-            fontSize: "2.5rem",
+            fontSize: "3.5rem",
+            marginRight: "5%"
           }}/>
         </>
         :
@@ -49,7 +50,8 @@ export default function Nav({matches, handleSideBar}) {
           }} onClick={handleSideBar}/>
           <ShoppingCartIcon sx={{
             color: "white",
-            fontSize: "2.5rem",
+            fontSize: "3.5rem",
+            marginRight: "5%"
           }}/>
         </>
       }

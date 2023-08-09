@@ -8,15 +8,14 @@ export default function Offerings({offers}) {
       <Grid container spacing={1.5} className='list-container'>
         {offers && offers.map(offer => (
           <Grid item
-            xs={12}
-            sm={6}
-            md={6}
-            lg={3}
-            xl={2}
+          sm={12}
+          md={6}
+          lg={4}
+          xl={3}
             key={offer.id}
             sx={{
               display: "flex",
-              justifyContent: "center"
+              justifyContent: "center",
             }}
           >
             <OfferCard

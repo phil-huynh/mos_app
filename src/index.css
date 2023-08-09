@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #5959e1;
+  color: #1b8c0e;
   text-decoration: inherit;
 }
 a:hover {
@@ -71,46 +71,51 @@ button:focus-visible {
 }
 
 .navContainer {
-  height: 5rem;
+  height: 10rem;
   width: 100%;
 
 }
 
 .navbar {
   width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background: linear-gradient(
+  background-color: rgba(255, 253, 253, 0.5);
+  backdrop-filter: blur(15px);
+  /* background: linear-gradient(
     to right,
-    rgb(244, 175, 187),
+    rgb(89, 218, 222),
     25%,
-    rgb(214, 97, 116),
+    rgb(35, 139, 139),
     55%,
-    rgb(244, 175, 187)
-  );
+    rgb(89, 218, 222)
+  ); */
 }
 
 .nav-list {
   display: flex;
   flex-direction: row;
-  background: url("./assets/mos_background.jpg");
+  /* background: url("./assets/mos_background.jpg");
   background-size: 100vw auto;
-  background-position: center;
+  background-position: center; */
 
   /* clip the text is possible */
-  -webkit-text-fill-color: transparent;
+  /* -webkit-text-fill-color: transparent;
   background-clip: text;
-  -webkit-background-clip: text;
+  -webkit-background-clip: text; */
 
 }
 
 .nav-item {
+  color: rgb(197, 11, 70);
   margin-inline: 25px;
   font-size: 2rem;
   font-weight: 900;
   list-style: none;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 .home,
@@ -125,8 +130,8 @@ section {
   color: white;
   font-weight: 700;
   font-size: 1.7rem;
-  width: 70%;
-  margin: 3rem;
+  width: 76%;
+  margin: 2rem;
   z-index: 2;
   padding: 35px;
   border: 1px solid rgba(139, 139, 139, 0.50);
@@ -163,12 +168,21 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(227, 226, 226);
-  width: 55%;
-  height: 28vh;
-  padding-right: 3.2rem;
+
+  height: 15vh;
   border-radius: 25px;
-  border: solid 1px black;
+  color: white;
+  font-weight: 700;
+  font-size: 1.7rem;
+  width: 25%;
+  margin: 3rem;
+  z-index: 2;
+  padding: 10px;
+  border: 1px solid rgba(139, 139, 139, 0.50);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px 1px rgba(139, 139, 139, 0.5);
+  backdrop-filter: blur(15px);
 }
 
 .email-form {
@@ -243,6 +257,10 @@ input {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+.head_shot {
+  border-radius: 25%;
 }
 
 /* .contentsContainer:after {

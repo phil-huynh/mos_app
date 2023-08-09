@@ -23,7 +23,7 @@ const offers = [
   {
     id: 1,
     title: "Biweekly Group Class",
-    details: "Breathing excercises and yoga positions in group setting",
+    details: "Breathing excercises ",
     price: 40
   },
   {

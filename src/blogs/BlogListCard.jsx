@@ -32,7 +32,10 @@ export default function BlogListCard({title, description, text}) {
         backdropFilter: "blur(10px);",
       }} raised >
       <CardContent>
-        <Typography color="text.secondary" variant="h5" gutterBottom>
+      <CardActions>
+        <Button size="small" onClick={handleShow}>{showBlogText ? 'CLOSE' : 'READ'}</Button>
+      </CardActions>
+        <Typography color="text.info" variant="h5" gutterBottom>
           {title}
         </Typography>
         <Typography sx={{ fontSize: 14 }} component="div">
@@ -40,9 +43,6 @@ export default function BlogListCard({title, description, text}) {
         </Typography>
       </CardContent>
       { showBlogText ? <Typography variant="h6" component="div">{text}</Typography> : null}
-      <CardActions>
-        <Button size="small" onClick={handleShow}>{showBlogText ? 'CLOSE' : 'READ'}</Button>
-      </CardActions>
     </Card>
   );
 }
