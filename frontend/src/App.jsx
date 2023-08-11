@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import Nav from './navComponents/Nav';
 import Home from './info/Home'
@@ -68,6 +68,7 @@ function App({blogs, offers, affiliates}) {
             </Route>
           </Routes>
         </div>
+        <Outlet />
       </div>
     </BrowserRouter>
   </>
