@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 
 
 export default function BlogListCard({title, description, text}) {
+  
   const [showBlogText, setShowBlogText] = useState(false)
   const handleShow = () => setShowBlogText(!showBlogText)
   const className = showBlogText ? 'blog-card blog-open' : 'blog-card'
