@@ -88,16 +88,11 @@ button:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 253, 253, 0.5);
+  border: 2px solid rgba(139, 139, 139, 0.50);
+  background-color: rgba(33, 145, 145, 0.8);
   backdrop-filter: blur(15px);
-  background: linear-gradient(
-    to right,
-    rgb(89, 218, 222),
-    25%,
-    rgb(35, 139, 139),
-    55%,
-    rgb(89, 218, 222)
-  );
+  box-shadow: 5;
+
 }
 
 .nav-list {
@@ -126,6 +121,7 @@ button:focus-visible {
 
 .contentsContainer {
   position: relative;
+  padding-top: 10rem;
   background-image: url("./assets/mos_background.jpg");
   background-size: cover;
   background-position: center;

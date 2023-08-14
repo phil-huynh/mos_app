@@ -46,10 +46,8 @@ export default function Nav({matches, handleSideBar}) {
         <>
           <MenuIcon sx={{
             color: "white",
-            fontSize: "2.5rem",
-            border: "white solid 2px",
-            borderRadius: "10px",
-            margin: "2rem"
+            fontSize: "4rem",
+            margin: "2.5rem"
           }} onClick={handleSideBar}/>
           <ShoppingCartIcon sx={{
             color: "white",

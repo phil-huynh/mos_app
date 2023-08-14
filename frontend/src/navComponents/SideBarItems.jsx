@@ -17,7 +17,8 @@ export default function SideBarItems({handleSideBar}) {
     "Speaking",
     "Press",
     "Contact",
-    "Free!"
+    "Free!",
+    "Admin"
   ]
   const paths = [
     "home",
@@ -27,7 +28,8 @@ export default function SideBarItems({handleSideBar}) {
     "speaking",
     "press",
     "contact",
-    "free"
+    "free",
+    "admin"
   ]
   return (
     <Box
