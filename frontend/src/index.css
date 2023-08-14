@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #1b8c0e;
+  color: #e7ede6;
   text-decoration: inherit;
 }
 a:hover {
@@ -32,11 +32,16 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("./assets/mos_background.jpg");
+  /* background-image: url("./assets/mos_background.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed; */
 
+}
+
+#root {
+  margin: 0 auto;
+  position: relative;
 }
 
 h1 {
@@ -61,10 +66,10 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 .container {
   position: relative;
@@ -73,7 +78,8 @@ button:focus-visible {
 .navContainer {
   height: 10rem;
   width: 100%;
-
+  position: fixed;
+  z-index: 10;
 }
 
 .navbar {
@@ -84,14 +90,14 @@ button:focus-visible {
   align-items: center;
   background-color: rgba(255, 253, 253, 0.5);
   backdrop-filter: blur(15px);
-  /* background: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(89, 218, 222),
     25%,
     rgb(35, 139, 139),
     55%,
     rgb(89, 218, 222)
-  ); */
+  );
 }
 
 .nav-list {
@@ -116,6 +122,14 @@ button:focus-visible {
   list-style: none;
   /* background-clip: text;
   -webkit-text-fill-color: transparent; */
+}
+
+.contentsContainer {
+  position: relative;
+  background-image: url("./assets/mos_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .home,
@@ -251,13 +265,6 @@ input {
   height: 100%;
 }
 
-.contentsContainer {
-  position: relative;
-  background-image: url("./assets/mos_background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
 
 .head_shot {
   border-radius: 25%;

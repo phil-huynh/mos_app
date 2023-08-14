@@ -32,6 +32,9 @@ export default function Nav({matches, handleSideBar}) {
           <li className="nav-item">
             <NavLink className="nav-link" to="/free">Free!</NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/admin">Admin</NavLink>
+          </li>
         </ul>
           <ShoppingCartIcon sx={{
             color: "white",

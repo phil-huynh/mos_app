@@ -14,6 +14,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Drawer from '@mui/material/Drawer';
 import SideBarItems from './navComponents/SideBarItems';
+import AdminMain from './admin/AdminMain';
 
 
 function App({blogs, offers, affiliates}) {
@@ -29,19 +30,17 @@ function App({blogs, offers, affiliates}) {
   }, [matches])
 
   return (
-  <>
-    <BrowserRouter>
-      <div className="container">
-        <div className='navContainer'>
-            <Nav matches={matches} handleSideBar={handleSideBar}/>
-            <Drawer
-              anchor="left"
-              open={sidebar}
-              onClose={handleSideBar}
-            >
-              <SideBarItems handleSideBar={handleSideBar}/>
-            </Drawer>
-        </div>
+    <BrowserRouter style={{position: "absolute", paddingTop:"100px"}}>
+      <div className='navContainer'>
+        <Nav matches={matches} handleSideBar={handleSideBar}/>
+        <Drawer
+          anchor="left"
+          open={sidebar}
+          onClose={handleSideBar}
+        >
+          <SideBarItems handleSideBar={handleSideBar}/>
+        </Drawer>
+      </div>
         <div className='contentsContainer'>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -66,12 +65,15 @@ function App({blogs, offers, affiliates}) {
             <Route path="free">
               <Route index element={<Free />} />
             </Route>
+            <Route path="free">
+              <Route index element={<Free />} />
+            </Route>
+            <Route path="admin">
+              <Route index element={<AdminMain />} />
+            </Route>
           </Routes>
         </div>
-        <Outlet />
-      </div>
     </BrowserRouter>
-  </>
   );
 }
 

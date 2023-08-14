@@ -2,7 +2,6 @@ import BlogListCard from './BlogListCard'
 import Grid from "@mui/material/Grid";
 
 export default function BlogList ({blogs}) {
-  console.log(blogs)
   return (
     <>
       <Grid container className='list-container'>

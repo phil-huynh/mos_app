@@ -15,7 +15,7 @@ class SubscriberOut(BaseModel):
 
 
 class SubscribersOut(BaseModel):
-    subscribers: Optional[SubscriberOut]
+    subscribers: list[SubscriberOut]
 
 
 @router.get("/subscribers", response_model=SubscribersOut)
