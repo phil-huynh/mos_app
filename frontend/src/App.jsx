@@ -37,8 +37,9 @@ function App({blogs, offers, affiliates}) {
           anchor="left"
           open={sidebar}
           onClose={handleSideBar}
+          hideBackdrop
         >
-          <SideBarItems handleSideBar={handleSideBar}/>
+          <SideBarItems handleSideBar={handleSideBar} />
         </Drawer>
       </div>
         <div className='contentsContainer'>
