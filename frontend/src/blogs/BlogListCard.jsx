@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 
 export default function BlogListCard({title, description, text}) {
-  
+
   const [showBlogText, setShowBlogText] = useState(false)
   const handleShow = () => setShowBlogText(!showBlogText)
   const className = showBlogText ? 'blog-card blog-open' : 'blog-card'
@@ -34,7 +34,7 @@ export default function BlogListCard({title, description, text}) {
       }} raised >
       <CardContent>
       <CardActions>
-        <Button size="small" onClick={handleShow}>{showBlogText ? 'CLOSE' : 'READ'}</Button>
+        <Button onClick={handleShow}>{showBlogText ? 'CLOSE' : 'READ'}</Button>
       </CardActions>
         <Typography color="text.info" variant="h5" gutterBottom>
           {title}
