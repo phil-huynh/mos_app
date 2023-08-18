@@ -11,6 +11,7 @@ class SubscriberIn(BaseModel):
 
 
 class SubscriberOut(BaseModel):
+    id: str
     email: str
 
 
@@ -20,9 +21,8 @@ class SubscribersOut(BaseModel):
 
 @router.get("/subscribers", response_model=SubscribersOut)
 def subscribers_list(queries: SubscriberQueries = Depends()):
-  return {
-     "subscribers": queries.get_all_subscribers(),
-  }
+  return SubscribersOut(**queries.get_all_subscribers())
+
 
 
 @router.get("/subscribers/{id}", response_model=SubscriberOut)
@@ -40,8 +40,9 @@ def get_subscriber(
 
 @router.post("/subscribers", response_model=SubscriberIn)
 def create_subscriber(
-   subscriber: SubscriberIn,
-   queries: SubscriberQueries = Depends()):
-   res = queries.create_subscriber(subscriber)
-   print("POST RES ------------>", res)
+        subscriber: SubscriberIn,
+        queries: SubscriberQueries = Depends()
+    ):
+    # res = queries.add_subscriber(subscriber)
+    return SubscriberOut(**queries.add_subscriber(subscriber))
 

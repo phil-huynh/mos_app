@@ -13,26 +13,30 @@ client = pymongo.MongoClient(mongo_string)
 
 class SubscriberQueries:
     def get_all_subscribers(self):
+        print("******* IN THE FUNCTION ************>")
         db = client[dbname]
-        return list(db.subscribers.find())
+        result = list(db.subscribers.find())
+        print("#################", result)
+        for value in result:
+            value["id"] = str(value["_id"])
+        print("****************************>",result)
+        return {"subscribers": result}
 
     def get_subscriber(self, id):
+        print("******* IN THE FUNCTION ************>")
+        print("THE ID IS", id)
         db = client[dbname]
-        res = db.subscrbers.find_one({ "_id": id })
-        print("res in get subscribers", res)
+        res = db.subscribers.find_one({ "_id": id })
+        print("res in get subscriber", res)
         if res:
-            return res
+            res["id"] = res["_id"]
+        return res
 
-    def create_subscriber(self, data):
+    def add_subscriber(self, data):
         db = client[dbname]
-        print("********* data", data)
         data = data.dict()
-        print("********* data after dict", data)
-
         res = db.subscribers.insert_one(data)
-        print("RES ------- ", res)
-        print("inserted id", res.inserted_id)
         if res.inserted_id:
             result = self.get_subscriber(res.inserted_id)
-        print("result", result)
+            result["id"] = str(result["_id"])
         return result
