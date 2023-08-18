@@ -7,7 +7,6 @@ router = APIRouter()
 class AffiliateIn(BaseModel):
     company: str
     topic: str
-    products: list[Product]
     link: str
 
 
@@ -17,7 +16,3 @@ class AffiliateOut(BaseModel):
     link: str
 
 
-class Product(BaseModel):
-    name: str
-    description: str
-    photo: str

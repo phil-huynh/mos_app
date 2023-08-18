@@ -22,7 +22,6 @@ services:
       MONGODATABASE: mosdata
       MONGOUSER: mosdata
       MONGOPASSWORD: mosdata
-      PORT: 8000
     ports:
       - "8000:8000"
     volumes:
@@ -30,7 +29,7 @@ services:
   mongo:
     image: mongo:6-jammy
     volumes:
-      - mos-data:/dat/db
+      - mos-data:/data/db
     ports:
       - "27017:27017"
     environment:
