@@ -24,7 +24,7 @@ a:hover {
 }
 
 h1, h2, h3 {
-  color: white;
+  color: yellow;
   z-index: 2;
 }
 
@@ -32,11 +32,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* background-image: url("./assets/mos_background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; */
-
 }
 
 #root {
@@ -67,10 +62,6 @@ button {
 button:hover {
   border-color: #646cff;
 }
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
 
 .container {
   position: relative;
@@ -93,21 +84,11 @@ button:focus-visible {
   background-color: rgba(33, 145, 145, 0.8);
   backdrop-filter: blur(15px);
   box-shadow: 5;
-
 }
 
 .nav-list {
   display: flex;
   flex-direction: row;
-  /* background: url("./assets/mos_background.jpg");
-  background-size: 100vw auto;
-  background-position: center; */
-
-  /* clip the text is possible */
-  /* -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text; */
-
 }
 
 .nav-item {
@@ -116,8 +97,6 @@ button:focus-visible {
   font-size: 2rem;
   font-weight: 900;
   list-style: none;
-  /* background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
 
 .contentsContainer {
@@ -139,7 +118,7 @@ button:focus-visible {
 }
 
 section {
-  color: white;
+  color: yellow;
   font-weight: 700;
   font-size: 1.7rem;
   width: 76%;
@@ -150,8 +129,6 @@ section {
   border-radius: 20px;
   background-color: rgba(16, 16, 16, 0.5);
   box-shadow: 5;
-  /* box-shadow: 0 0 10px 1px rgba(139, 139, 139, 0.5); */
-  /* backdrop-filter: blur(15px); */
 }
 
 .speaking,
@@ -212,7 +189,6 @@ input {
   font-size: 2rem;
 }
 
-
 .form-label {
   margin-left: 3rem;
   margin-right: 1rem;
@@ -226,18 +202,6 @@ input {
 .blog-card {
   min-height: 15rem;
   max-height: 15rem;
-  /* color: white;
-  font-weight: 700;
-  font-size: 1.7rem;
-  width: 70%;
-  margin: 3rem;
-  z-index: 2;
-  padding: 35px;
-  border: 1px solid rgba(139, 139, 139, 0.50);
-  border-radius: 20px;
-  background-color: rgba(139, 139, 139, 0.50);
-  box-shadow: 0 0 10px 1px rgba(139, 139, 139, 0.5);
-  backdrop-filter: blur(15px); */
 }
 
 .blog-card:hover {
@@ -266,27 +230,13 @@ input {
   width: 15rem
 }
 
-
 .home {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-
 .head_shot {
   border-radius: 25%;
 }
 
-/* .contentsContainer:after {
-  content: "";
-  position: absolute;
-  display: block;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(51, 51, 51);
-  opacity: .6;
-  z-index: 1;
-  } */
