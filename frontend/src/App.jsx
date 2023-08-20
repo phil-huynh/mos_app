@@ -54,7 +54,7 @@ function App({blogs, offers, affiliates}) {
             <Route path="offerings">
               <Route index element={<Offerings offers={offers}/>} />
             </Route>
-            <Route path="speaking">
+            {/* <Route path="speaking">
               <Route index element={<Speaking />} />
             </Route>
             <Route path="press">
@@ -62,10 +62,7 @@ function App({blogs, offers, affiliates}) {
             </Route>
             <Route path="contact">
               <Route index element={<Contact />} />
-            </Route>
-            <Route path="free">
-              <Route index element={<Free />} />
-            </Route>
+            </Route> */}
             <Route path="free">
               <Route index element={<Free />} />
             </Route>

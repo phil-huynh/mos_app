@@ -1,3 +1,16 @@
-export default function AdminMain() {
-  return <div style={{color: "red", border: "red solid 5px"}}>Hello World</div>
+import { useState } from 'react'
+import AddOffer from './AddOffer'
+import AddAffiliate from './AddAffiliate'
+import SubscriberList from './ListSubscribers'
+
+export default function  AdminMain() {
+
+
+  return (
+    <div>
+      <SubscriberList/>
+      <AddOffer/>
+      <AddAffiliate/>
+    </div>
+  )
 }

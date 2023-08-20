@@ -1,17 +1,16 @@
 import { useState } from 'react'
 import Grid from "@mui/material/Grid";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 
-export default function Free() {
+export default function  AddAffiliate() {
 
-  const [data, setData] = useState({first_name: '', email: ''})
+
+  const [data, setData] = useState({ company: '', product: '', link: '' })
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const url = "http://localhost:8000/subscribers/"
+    const url = "http://localhost:8000/affiliates/"
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),
@@ -19,15 +18,12 @@ export default function Free() {
         'Content-Type': 'application/json',
       },
     };
-    console.log(data)
+
     const response = await fetch(url, fetchConfig)
     if (response.ok) {
-      setData({first_name: '', email: ''})
+      setData({ company: '', product: '', link: 0 })
     }
   }
-
-
-
 
   return (
     <>
@@ -41,7 +37,7 @@ export default function Free() {
                   display: "flex",
                   justifyContent: "center"
                 }}>
-              <h1>Hello</h1>
+              <h2>Add Affiliate</h2>
               </Grid>
               <Grid item>
                 <Grid container
@@ -59,9 +55,9 @@ export default function Free() {
                     }}>
                       <input
                         type='text'
-                        placeholder='first name'
-                        value={data.first_name}
-                        name="first_name"
+                        placeholder='company'
+                        value={data.company}
+                        name="company"
                         onChange={handleInput}
                       />
                   </Grid>
@@ -73,9 +69,23 @@ export default function Free() {
                     }}>
                         <input
                           type='text'
-                          placeholder='email'
-                          value={data.email}
-                          name="email"
+                          placeholder='product'
+                          value={data.product}
+                          name="product"
+                          onChange={handleInput}
+                        />
+                  </Grid>
+                  <Grid item
+                    sx={{
+                      display: "flex",
+                      placeItems: "center",
+                      marginY: "2rem",
+                    }}>
+                        <input
+                          type='text'
+                          placeholder='link'
+                          value={data.link}
+                          name="link"
                           onChange={handleInput}
                         />
                   </Grid>
@@ -88,7 +98,7 @@ export default function Free() {
                   placeContent: "center"
                   }}
                 >
-                <button onClick={handleSubmit}>Subscribe</button>
+                <button onClick={handleSubmit}>Add Affiliate</button>
               </Grid>
             </Grid>
           </form>

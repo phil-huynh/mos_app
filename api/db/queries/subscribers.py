@@ -25,3 +25,15 @@ class SubscriberQueries:
             result = self.find_subscriber(response.inserted_id)
             result["id"] = str(result["_id"])
         return result
+
+    def delete_subscriber(self, id):
+        id = ObjectId(id)
+        db = client[dbname]
+        exists = result = self.find_subscriber(id)
+        if not exists:
+            return {"message": "This subscriber does not exist"}
+        db.subscribers.delete_one({"_id": id})
+        result = self.find_subscriber(id)
+        if not result:
+            return {"message": "Success!"}
+        return {"message": "Could not delete subscriber"}
