@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Grid from "@mui/material/Grid";
 
-export default function  AddAffiliate() {
+export default function  AddAffiliate({loadAffiliates}) {
 
   const [data, setData] = useState({ company: '', product: '', link: '' })
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
@@ -20,7 +20,8 @@ export default function  AddAffiliate() {
 
     const response = await fetch(url, fetchConfig)
     if (response.ok) {
-      setData({ company: '', product: '', link: 0 })
+      setData({ company: '', product: '', link: '' })
+      loadAffiliates()
     }
   }
 

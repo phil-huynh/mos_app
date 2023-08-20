@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Grid from "@mui/material/Grid";
 
-export default function AddOffer () {
+export default function AddOffer ({loadOffers}) {
 
   const [data, setData] = useState({ title: '', description: '', price: 0 })
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
@@ -21,6 +21,7 @@ export default function AddOffer () {
     const response = await fetch(url, fetchConfig)
     if (response.ok) {
       setData({ title: '', description: '', price: 0 })
+      loadOffers()
     }
   }
 
@@ -36,7 +37,7 @@ export default function AddOffer () {
                   display: "flex",
                   justifyContent: "center"
                 }}>
-              <h2>Add Offers</h2>
+              <h2>Add Offer</h2>
               </Grid>
               <Grid item>
                 <Grid container

@@ -52,7 +52,7 @@ function App({blogs, offers, affiliates}) {
               <Route index element={<BlogsList blogs={blogs}/>} />
             </Route>
             <Route path="offerings">
-              <Route index element={<Offerings offers={offers}/>} />
+              <Route index element={<Offerings />} />
             </Route>
             {/* <Route path="speaking">
               <Route index element={<Speaking />} />
@@ -70,6 +70,7 @@ function App({blogs, offers, affiliates}) {
               <Route index element={<AdminMain />} />
             </Route>
           </Routes>
+        <Affiliates matches={matches}/>
         </div>
     </BrowserRouter>
   );

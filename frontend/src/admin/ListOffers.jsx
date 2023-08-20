@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import AddOffer from "./AddOffer"
 
 export default function OfferList () {
 
@@ -9,7 +10,6 @@ export default function OfferList () {
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
-      console.log(data.offers)
       setOffers(data.offers)
     }
     else {
@@ -57,6 +57,7 @@ export default function OfferList () {
           </tbody>
         </table>
       </div>
+      <AddOffer loadOffers={loadOffers}/>
     </>
   )
 }

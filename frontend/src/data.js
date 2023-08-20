@@ -122,7 +122,7 @@ const affiliates = [
 
 const props = {
   blogs: blogs,
-  offers: offers,
+  // offers: offers,
   affiliates: affiliates
 }
 

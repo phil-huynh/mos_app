@@ -11,10 +11,8 @@ export default function  AdminMain() {
   return (
     <div>
       <SubscriberList/>
-      <AffiliateList/>
       <OfferList/>
-      <AddOffer/>
-      <AddAffiliate/>
+      <AffiliateList />
     </div>
   )
 }

@@ -1,32 +1,48 @@
 import Grid from "@mui/material/Grid";
 import AffiliateCard from './AffiliateCard'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-export default function Affiliates({affiliates, matches}) {
-  const [queue, setQueue] = useState(affiliates)
+export default function Affiliates({matches}) {
+  const [affiliates, setAffiliates] = useState([])
 
+  const loadAffiliates = async () => {
+    const url = "http://localhost:8000/affiliates/"
+    const response = await fetch(url)
+    if (response.ok) {
+      const data = await response.json()
+      setAffiliates(data.affiliates)
+    }
+    else {
+      console.error(response)
+    }
+  }
 
-  const handleNext = () => setQueue([...queue.slice(1), queue[0]])
+  useEffect(() => {
+    loadAffiliates()
+  }, [])
+
+  const handleNext = () => setAffiliates([...affiliates.slice(1), affiliates[0]])
   const handlePrev = () => (
-    setQueue([queue[queue.length - 1], ...queue.slice(0, queue.length - 1)])
+    setAffiliates([affiliates[affiliates.length - 1], ...affiliates.slice(0, affiliates.length - 1)])
   )
 
   return (
     <>
+      <h2>Affiliates</h2>
       <ArrowBackIosIcon sx={{color: "white", fontSize: "2rem"}} onClick={handlePrev}/>
       <ArrowForwardIosIcon sx={{color: "white", fontSize: "2rem"}} onClick={handleNext}/>
       <Grid container spacing={1.5} className='list-container'>
-        {queue.slice(0, 4).map(affiliate => (
+        {affiliates.slice(0, 4).map(affiliate => (
           <Grid item
-          xs={12}
-          sm={10}
-          md={6}
-          lg={6}
+          xs={6}
+          sm={4}
+          md={3}
+          lg={2}
           xl={1}
           key={affiliate.id}
-          sx={{border: "red solid 2px", display: "flex", justifyContent: "center"}}
+          sx={{display: "flex", justifyContent: "center"}}
           >
             <AffiliateCard affiliate={affiliate}/>
           </Grid>

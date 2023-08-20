@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react"
+import AddAffiliate from "./AddAffiliate"
 
 export default function AffiliateList () {
 
-  const [affilitates, setAffiliates] = useState([])
+  const [affiliates, setAffiliates] = useState([])
 
   const loadAffiliates = async () => {
     const url = "http://localhost:8000/affiliates/"
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
-      console.log(data.affiliates)
       setAffiliates(data.affiliates)
     }
     else {
@@ -44,7 +44,7 @@ export default function AffiliateList () {
             </tr>
           </thead>
           <tbody>
-            {affilitates && affilitates.map(affiliate => (
+            {affiliates && affiliates.map(affiliate => (
               <tr key={affiliate.id}>
                 <td >{affiliate.company}</td>
                 <td >{affiliate.product}</td>
@@ -57,6 +57,7 @@ export default function AffiliateList () {
           </tbody>
         </table>
       </div>
+      <AddAffiliate loadAffiliates={loadAffiliates}/>
     </>
   )
 }
