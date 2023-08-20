@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 
 export default function  AddAffiliate() {
 
-
   const [data, setData] = useState({ company: '', product: '', link: '' })
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
 

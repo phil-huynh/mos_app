@@ -22,6 +22,10 @@ class OffersOut(BaseModel):
     offers: list[OfferOut]
 
 
+class Message(BaseModel):
+    message: str
+
+
 @router.get("/offers", response_model=OffersOut)
 def offers_list(queries: OfferQueries = Depends()):
   return OffersOut(**queries.get_all_offers())
@@ -46,3 +50,15 @@ def create_offer(
         queries: OfferQueries = Depends()
     ):
     return OfferOut(**queries.add_offer(offer))
+
+@router.delete(
+    "/offers/{id}",
+    response_model=Message,
+    responses={400: {"model": Message}}
+)
+def remove_affiliate(
+        id: str,
+        response: Response,
+        queries: OfferQueries = Depends()
+    ):
+    return Message(**queries.delete_offer(id))

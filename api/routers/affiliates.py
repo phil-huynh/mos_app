@@ -22,6 +22,10 @@ class AffiliatesOut(BaseModel):
     affiliates: list[AffiliateOut]
 
 
+class Message(BaseModel):
+    message: str
+
+
 @router.get("/affiliates", response_model=AffiliatesOut)
 def affiliates_list(queries: AffiliateQueries = Depends()):
   return AffiliatesOut(**queries.get_all_affiliates())
@@ -47,3 +51,14 @@ def create_affiliate(
     ):
     return AffiliateOut(**queries.add_affiliate(offer))
 
+@router.delete(
+    "/affiliates/{id}",
+    response_model=Message,
+    responses={400: {"model": Message}}
+)
+def remove_affiliate(
+        id: str,
+        response: Response,
+        queries: AffiliateQueries = Depends()
+    ):
+    return Message(**queries.delete_affiliate(id))

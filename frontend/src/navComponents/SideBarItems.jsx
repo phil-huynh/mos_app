@@ -53,7 +53,7 @@ export default function SideBarItems({handleSideBar}) {
     >
       <List>
         <ListItem sx={{justifyContent: "end"}} disablePadding>
-          <CloseIcon sx={{fontSize: "2rem"}} onClick={handleSideBar}/>
+          <CloseIcon sx={{fontSize: "2rem", color: "white"}} onClick={handleSideBar}/>
         </ListItem>
         {options.map((text, i) => (
           <Fragment key={text}>

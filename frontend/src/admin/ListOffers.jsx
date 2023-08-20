@@ -1,57 +1,59 @@
 import { useState, useEffect } from "react"
 
-export default function SubscriberList () {
+export default function OfferList () {
 
-  const [subscribers, setSubscribers] = useState([])
+  const [offers, setOffers] = useState([])
 
-  const loadSubscribers = async () => {
-    const url = "http://localhost:8000/subscribers/"
+  const loadOffers = async () => {
+    const url = "http://localhost:8000/offers/"
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
-      setSubscribers(data.subscribers)
+      console.log(data.offers)
+      setOffers(data.offers)
     }
     else {
       console.error(response)
     }
   }
 
-  const deleteSubscriber = async (id) => {
-    const url = `http://localhost:8000/subscribers/${id}`
+  const deleteOffer = async (id) => {
+    const url = `http://localhost:8000/offers/${id}`
     const response = await fetch(url, {method: "DELETE"})
     if (response.ok) {
-      loadSubscribers()
+      loadOffers()
     }
   }
 
   useEffect(() => {
-    loadSubscribers()
+    loadOffers()
   }, [])
 
   return (
     <>
       <div className="form-box" style={{width: "50%"}}>
-        <h4>Subscribers</h4>
+        <h4>Offers</h4>
       </div>
       <div className="form-box" style={{width: "80%"}}>
         <table style={{color: "white", width: "100%", padding: "15px"}}>
           <thead>
             <tr>
-              <td>Email</td>
-              <td>First Name</td>
+              <td>Title</td>
+              <td>Description</td>
+              <td>Price</td>
             </tr>
           </thead>
           <tbody>
-            {subscribers && subscribers.map(subscriber => (
-              <tr key={subscriber.id}>
-                <td >{subscriber.email}</td>
-                <td >{subscriber.first_name}</td>
+            {offers && offers.map(offer => (
+              <tr key={offer.id}>
+                <td >{offer.title}</td>
+                <td >{offer.description}</td>
+                <td >{`$ ${offer.price}`}</td>
                 <td >
-                  <button onClick={()=>{deleteSubscriber(subscriber.id)}}>Delete</button>
+                  <button onClick={()=>{deleteOffer(offer.id)}}>Delete</button>
                 </td>
               </tr>
             ))}
-
           </tbody>
         </table>
       </div>

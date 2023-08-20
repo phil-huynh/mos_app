@@ -25,3 +25,15 @@ class AffiliateQueries:
             result = self.find_affiliate(response.inserted_id)
             result["id"] = str(result["_id"])
         return result
+
+    def delete_affiliate(self, id):
+        id = ObjectId(id)
+        db = client[dbname]
+        exists = self.find_affiliate(id)
+        if not exists:
+            return {"message": "This affiliate does not exist"}
+        db.affiliates.delete_one({"_id": id})
+        result = self.find_affiliate(id)
+        if not result:
+            return {"message": "Success!"}
+        return {"message": "Could not delete affiliate"}
