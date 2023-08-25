@@ -1,28 +1,13 @@
 import { useState, useEffect } from "react"
 import AddAffiliate from "./AddAffiliate"
+import { useStore } from "../ContextStore"
 
 export default function AffiliateList () {
 
-  const [affiliates, setAffiliates] = useState([])
-
-  const loadAffiliates = async () => {
-    const url = "http://localhost:8000/affiliates/"
-    const response = await fetch(url)
-    if (response.ok) {
-      const data = await response.json()
-      setAffiliates(data.affiliates)
-    }
-    else {
-      console.error(response)
-    }
-  }
+  const { affiliates, loadAffiliates, urls, request } = useStore()
 
   const deleteAffiliate = async (id) => {
-    const url = `http://localhost:8000/affiliates/${id}`
-    const response = await fetch(url, {method: "DELETE"})
-    if (response.ok) {
-      loadAffiliates()
-    }
+    await request.delete(urls.affiliate(id), loadAffiliates)
   }
 
   useEffect(() => {
@@ -44,7 +29,7 @@ export default function AffiliateList () {
             </tr>
           </thead>
           <tbody>
-            {affiliates && affiliates.map(affiliate => (
+            {affiliates?.map(affiliate => (
               <tr key={affiliate.id}>
                 <td >{affiliate.company}</td>
                 <td >{affiliate.product}</td>

@@ -2,31 +2,24 @@ import { useState } from 'react'
 import Grid from "@mui/material/Grid";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useStore } from '../ContextStore';
 
 export default function Free() {
 
-  const [data, setData] = useState({first_name: '', email: ''})
+  const { urls, request } = useStore()
+
+  const emptySubscriber = {first_name: '', email: ''}
+
+  const [data, setData] = useState(emptySubscriber)
+
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
+  const reset = () => setData(emptySubscriber)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const url = "http://localhost:8000/subscribers/"
-    const fetchConfig = {
-      method: "post",
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    console.log(data)
-    const response = await fetch(url, fetchConfig)
-    if (response.ok) {
-      setData({first_name: '', email: ''})
-    }
+    await request.post(urls.subscribers, data, reset)
   }
-
-
 
 
   return (

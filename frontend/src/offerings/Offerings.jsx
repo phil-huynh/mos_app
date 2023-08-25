@@ -1,22 +1,11 @@
 import { useState, useEffect } from 'react'
 import Grid from "@mui/material/Grid";
 import OfferCard from "./OfferCard"
+import { useStore } from '../ContextStore';
 
 export default function Offerings() {
 
-  const [offers, setOffers] = useState([])
-
-  const loadOffers = async () => {
-    const url = "http://localhost:8000/offers/"
-    const response = await fetch(url)
-    if (response.ok) {
-      const data = await response.json()
-      setOffers(data.offers)
-    }
-    else {
-      console.error(response)
-    }
-  }
+  const { offers, loadOffers } = useStore()
 
   useEffect(() => {
     loadOffers()
@@ -25,7 +14,7 @@ export default function Offerings() {
   return (
     <>
       <Grid container spacing={1.5} className='list-container'>
-        {offers && offers.map(offer => (
+        {offers?.map(offer => (
           <Grid item
           sm={12}
           md={6}

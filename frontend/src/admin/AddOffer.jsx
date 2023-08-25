@@ -1,28 +1,25 @@
 import { useState } from 'react'
 import Grid from "@mui/material/Grid";
+import { useStore } from '../ContextStore';
 
-export default function AddOffer ({loadOffers}) {
+export default function AddOffer () {
 
-  const [data, setData] = useState({ title: '', description: '', price: 0 })
+  const {urls, request, loadOffers} = useStore()
+
+  const emptyOffer = { title: '', description: '', price: 0 }
+
+  const [data, setData] = useState(emptyOffer)
+
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
+
+  const reset = () => {
+    setData(emptyOffer)
+    loadOffers()
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const url = "http://localhost:8000/offers/"
-    const fetchConfig = {
-      method: "post",
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const response = await fetch(url, fetchConfig)
-    if (response.ok) {
-      setData({ title: '', description: '', price: 0 })
-      loadOffers()
-    }
+    await request.post(urls.offers, data, reset)
   }
 
   return (

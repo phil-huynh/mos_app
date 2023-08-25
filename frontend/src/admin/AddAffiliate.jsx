@@ -1,28 +1,25 @@
 import { useState } from 'react'
 import Grid from "@mui/material/Grid";
+import { useStore } from '../ContextStore';
 
-export default function  AddAffiliate({loadAffiliates}) {
+export default function  AddAffiliate() {
 
-  const [data, setData] = useState({ company: '', product: '', link: '' })
+  const { urls, request, loadAffiliates } = useStore()
+
+  const emptyAffiliate = { company: '', product: '', link: '' }
+
+  const [data, setData] = useState(emptyAffiliate)
+
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
+
+  const reset = () => {
+    setData(emptyAffiliate)
+    loadAffiliates()
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const url = "http://localhost:8000/affiliates/"
-    const fetchConfig = {
-      method: "post",
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const response = await fetch(url, fetchConfig)
-    if (response.ok) {
-      setData({ company: '', product: '', link: '' })
-      loadAffiliates()
-    }
+    await request.post(urls.affiliates, data, reset)
   }
 
   return (

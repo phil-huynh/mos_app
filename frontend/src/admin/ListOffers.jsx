@@ -1,28 +1,13 @@
 import { useState, useEffect } from "react"
 import AddOffer from "./AddOffer"
+import { useStore } from "../ContextStore"
 
 export default function OfferList () {
 
-  const [offers, setOffers] = useState([])
-
-  const loadOffers = async () => {
-    const url = "http://localhost:8000/offers/"
-    const response = await fetch(url)
-    if (response.ok) {
-      const data = await response.json()
-      setOffers(data.offers)
-    }
-    else {
-      console.error(response)
-    }
-  }
+  const { offers, loadOffers, urls, request } = useStore()
 
   const deleteOffer = async (id) => {
-    const url = `http://localhost:8000/offers/${id}`
-    const response = await fetch(url, {method: "DELETE"})
-    if (response.ok) {
-      loadOffers()
-    }
+    await request.delete(urls.offer(id), loadOffers)
   }
 
   useEffect(() => {
@@ -57,7 +42,7 @@ export default function OfferList () {
           </tbody>
         </table>
       </div>
-      <AddOffer loadOffers={loadOffers}/>
+      <AddOffer />
     </>
   )
 }

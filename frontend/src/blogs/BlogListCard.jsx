@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-
 export default function BlogListCard({title, description, text}) {
 
   const [showBlogText, setShowBlogText] = useState(false)

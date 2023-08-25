@@ -3,21 +3,11 @@ import AffiliateCard from './AffiliateCard'
 import { useState, useEffect } from 'react'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useStore } from "../ContextStore";
 
 export default function Affiliates({matches}) {
-  const [affiliates, setAffiliates] = useState([])
 
-  const loadAffiliates = async () => {
-    const url = "http://localhost:8000/affiliates/"
-    const response = await fetch(url)
-    if (response.ok) {
-      const data = await response.json()
-      setAffiliates(data.affiliates)
-    }
-    else {
-      console.error(response)
-    }
-  }
+  const { affiliates, loadAffiliates, setAffiliates } = useStore()
 
   useEffect(() => {
     loadAffiliates()
@@ -31,8 +21,8 @@ export default function Affiliates({matches}) {
   return (
     <>
       <h2>Affiliates</h2>
-      <ArrowBackIosIcon sx={{color: "white", fontSize: "2rem"}} onClick={handlePrev}/>
-      <ArrowForwardIosIcon sx={{color: "white", fontSize: "2rem"}} onClick={handleNext}/>
+      <ArrowBackIosIcon sx={{color: "white", fontSize: "2rem", cursor: "pointer"}} onClick={handlePrev}/>
+      <ArrowForwardIosIcon sx={{color: "white", fontSize: "2rem", cursor: "pointer"}} onClick={handleNext}/>
       <Grid container spacing={1.5} className='list-container'>
         {affiliates.slice(0, 4).map(affiliate => (
           <Grid item

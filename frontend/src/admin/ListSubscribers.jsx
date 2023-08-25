@@ -1,27 +1,12 @@
 import { useState, useEffect } from "react"
+import { useStore } from "../ContextStore"
 
 export default function SubscriberList () {
 
-  const [subscribers, setSubscribers] = useState([])
-
-  const loadSubscribers = async () => {
-    const url = "http://localhost:8000/subscribers/"
-    const response = await fetch(url)
-    if (response.ok) {
-      const data = await response.json()
-      setSubscribers(data.subscribers)
-    }
-    else {
-      console.error(response)
-    }
-  }
+  const { subscribers, loadSubscribers, urls, request } = useStore()
 
   const deleteSubscriber = async (id) => {
-    const url = `http://localhost:8000/subscribers/${id}`
-    const response = await fetch(url, {method: "DELETE"})
-    if (response.ok) {
-      loadSubscribers()
-    }
+    await request.delete(urls.subscriber(id), loadSubscribers)
   }
 
   useEffect(() => {
