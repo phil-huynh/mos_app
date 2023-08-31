@@ -63,6 +63,7 @@ export default function ContextProvider ({ children }) {
   const [affiliates, setAffiliates] = useState([])
   const [offers, setOffers] = useState([])
   const [subscribers, setSubscribers] = useState([])
+  const [selection, setSelection] = useState(null)
 
   const loadAffiliates = async () => {
     request.get(urls.affiliates, setAffiliates, "affiliates")
