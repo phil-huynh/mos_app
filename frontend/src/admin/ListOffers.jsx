@@ -14,13 +14,9 @@ export default function OfferList () {
     setSelection,
     deleteModal,
     setDeleteModal,
-    setSelectFrom,
     selectFrom
+    setSelectFrom,
   } = useStore()
-
-  // const deleteOffer = async (id) => {
-  //   await request.delete(urls.offer(id), loadOffers)
-  // }
 
   useEffect(() => {
     loadOffers()

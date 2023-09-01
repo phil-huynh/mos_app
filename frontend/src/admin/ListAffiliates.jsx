@@ -14,13 +14,9 @@ export default function AffiliateList () {
     setSelection,
     deleteModal,
     setDeleteModal,
-    setSelectFrom,
     selectFrom
+    setSelectFrom,
   } = useStore()
-
-  // const deleteAffiliate = async (id) => {
-  //   await request.delete(urls.affiliate(id), loadAffiliates)
-  // }
 
   useEffect(() => {
     loadAffiliates()

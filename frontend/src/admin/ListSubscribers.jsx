@@ -13,13 +13,9 @@ export default function SubscriberList () {
     setSelection,
     deleteModal,
     setDeleteModal,
-    setSelectFrom,
     selectFrom
+    setSelectFrom,
   } = useStore()
-
-  // const deleteSubscriber = async (id) => {
-  //   await request.delete(urls.subscriber(id), loadSubscribers)
-  // }
 
   useEffect(() => {
     loadSubscribers()
