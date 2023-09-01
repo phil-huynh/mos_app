@@ -1,12 +1,38 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Modal from "@mui/material/Modal";
+import Backdrop from "@mui/material/Backdrop";
+import Paper from "@mui/material/Paper";
+import Fade from "@mui/material/Fade";
+import CloseIcon from '@mui/icons-material/Close';
 import Grid from "@mui/material/Grid";
 import { useStore } from '../ContextStore';
 
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "20%",
+  bgcolor: "background.paper",
+  p: 4.5,
+};
+
 export default function AddOffer () {
 
-  const {urls, request, loadOffers} = useStore()
+  const {
+    urls,
+    request,
+    loadOffers,
+    addOfferModal,
+    setAddOfferModal
+  } = useStore()
 
-  const emptyOffer = { title: '', description: '', price: 0 }
+  const emptyOffer = {
+    title: '',
+    description: '',
+    price: 0
+  }
 
   const [data, setData] = useState(emptyOffer)
 
@@ -15,6 +41,7 @@ export default function AddOffer () {
   const reset = () => {
     setData(emptyOffer)
     loadOffers()
+    setAddOfferModal(false)
   }
 
   const handleSubmit = async (e) => {
@@ -23,19 +50,36 @@ export default function AddOffer () {
   }
 
   return (
-    <>
-      <div className='form-container'>
-        <div className="form-box">
-
-          <form className='email-form' id='email-form' onSubmit={handleSubmit}>
+    <div>
+      <Modal
+        aria-labelledby="opportunity-data-card"
+        aria-describedby="opportunity-probability-data"
+        open={addOfferModal}
+        // onClose={() => setAddManufacturerModal(false)}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500
+        }}
+      >
+        <Fade in={addOfferModal}>
+          <Paper
+            sx={style}
+            elevation={10}
+          >
+            <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>
+              <h2 style={{color: "black"}}>Add an offer</h2>
+              <CloseIcon onClick={() => setAddOfferModal(false)} sx={{cursor: "pointer"}}/>
+            </div>
+            <form className='email-form' id='email-form' onSubmit={handleSubmit}>
             <Grid container direction='column'>
-              <Grid item
+              {/* <Grid item
                 sx={{
                   display: "flex",
                   justifyContent: "center"
                 }}>
               <h2>Add Offer</h2>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Grid container
                   sx={{
@@ -92,15 +136,17 @@ export default function AddOffer () {
                 item
                 sx={{
                   display: "flex",
-                  placeContent: "center"
+                  justifyContent: "space-around"
                   }}
                 >
+                <button onClick={() => setAddOfferModal(false)}>Cancel</button>
                 <button onClick={handleSubmit}>Add Offer</button>
               </Grid>
             </Grid>
           </form>
-        </div>
-      </div>
-    </>
-  )
+          </Paper>
+        </Fade>
+      </Modal>
+    </div>
+  );
 }

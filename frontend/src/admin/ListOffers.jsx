@@ -14,8 +14,10 @@ export default function OfferList () {
     setSelection,
     deleteModal,
     setDeleteModal,
-    selectFrom
+    selectFrom,
     setSelectFrom,
+    addOfferModal,
+    setAddOfferModal
   } = useStore()
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export default function OfferList () {
     setSelectFrom("offer")
   }
 
+
   return (
     <>
       {deleteModal && selectFrom === "offer" ?
@@ -43,10 +46,12 @@ export default function OfferList () {
         :
         null
       }
-      <div className="form-box" style={{width: "50%"}}>
-        <h4>Offers</h4>
-      </div>
-      <div className="form-box" style={{width: "80%"}}>
+      {}
+      <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
+        <div className="form-box" style={{width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
+          <h4>Offers</h4>
+          <button onClick={()=>setAddOfferModal(true)}>Add Offer</button>
+        </div>
         <table style={{color: "white", width: "100%", padding: "15px"}}>
           <thead>
             <tr>
@@ -69,7 +74,7 @@ export default function OfferList () {
           </tbody>
         </table>
       </div>
-      <AddOffer />
+      {addOfferModal && <AddOffer />}
     </>
   )
 }

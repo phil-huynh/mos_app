@@ -13,7 +13,7 @@ export default function SubscriberList () {
     setSelection,
     deleteModal,
     setDeleteModal,
-    selectFrom
+    selectFrom,
     setSelectFrom,
   } = useStore()
 
@@ -42,10 +42,10 @@ export default function SubscriberList () {
         :
         null
       }
-      <div className="form-box" style={{width: "50%"}}>
-        <h4>Subscribers</h4>
-      </div>
-      <div className="form-box" style={{width: "80%"}}>
+      <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
+        <div className="form-box" style={{width: "50%"}}>
+          <h4>Subscribers</h4>
+        </div>
         <table style={{color: "white", width: "100%", padding: "15px"}}>
           <thead>
             <tr>

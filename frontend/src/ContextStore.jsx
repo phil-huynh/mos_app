@@ -58,14 +58,15 @@ export default function ContextProvider ({ children }) {
     }
   }
 
-
-
   const [affiliates, setAffiliates] = useState([])
   const [offers, setOffers] = useState([])
   const [subscribers, setSubscribers] = useState([])
   const [selection, setSelection] = useState(null)
   const [deleteModal, setDeleteModal] = useState(false)
   const [selectFrom, setSelectFrom] = useState('')
+  const [addAffiliateModal, setAddAffiliateModal] = useState(false)
+  const [addOfferModal, setAddOfferModal] = useState(false)
+
 
   const loadAffiliates = async () => {
     request.get(urls.affiliates, setAffiliates, "affiliates")
@@ -91,13 +92,20 @@ export default function ContextProvider ({ children }) {
     selection: selection,
     deleteModal: deleteModal,
     selectFrom: selectFrom,
-    setSelection: setSelection,
-    setDeleteModal: setDeleteModal,
-    setSelectFrom: setSelectFrom,
+
+    addAffiliateModal: addAffiliateModal,
+    addOfferModal: addOfferModal,
+
+    setAddAffiliateModal: setAddAffiliateModal,
+    setAddOfferModal, setAddOfferModal,
 
     setAffiliates: setAffiliates,
     setOffers: setOffers,
     setSubscribers: setSubscribers,
+
+    setSelection: setSelection,
+    setDeleteModal: setDeleteModal,
+    setSelectFrom: setSelectFrom,
 
     loadAffiliates: loadAffiliates,
     loadOffers: loadOffers,

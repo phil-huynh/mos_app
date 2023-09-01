@@ -14,7 +14,7 @@ export default function AffiliateList () {
     setSelection,
     deleteModal,
     setDeleteModal,
-    selectFrom
+    selectFrom,
     setSelectFrom,
   } = useStore()
 
@@ -43,10 +43,11 @@ export default function AffiliateList () {
         :
         null
       }
-      <div className="form-box" style={{width: "50%"}}>
-        <h4>Affiliates</h4>
-      </div>
-      <div className="form-box" style={{width: "80%"}}>
+      <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
+        <div className="form-box" style={{width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
+          <h4>Affiliates</h4>
+          <button>Add Affiliate</button>
+        </div>
         <table style={{color: "white", width: "100%", padding: "15px"}}>
           <thead>
             <tr>
