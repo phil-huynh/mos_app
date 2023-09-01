@@ -33,7 +33,6 @@ export default function OfferList () {
     setSelectFrom("offer")
   }
 
-
   return (
     <>
       {deleteModal && selectFrom === "offer" ?

@@ -16,6 +16,8 @@ export default function AffiliateList () {
     setDeleteModal,
     selectFrom,
     setSelectFrom,
+    addAffiliateModal,
+    setAddAffiliateModal
   } = useStore()
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function AffiliateList () {
       <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
         <div className="form-box" style={{width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
           <h4>Affiliates</h4>
-          <button>Add Affiliate</button>
+          <button onClick={() => setAddAffiliateModal(true)}>Add Affiliate</button>
         </div>
         <table style={{color: "white", width: "100%", padding: "15px"}}>
           <thead>
@@ -70,7 +72,7 @@ export default function AffiliateList () {
           </tbody>
         </table>
       </div>
-      <AddAffiliate loadAffiliates={loadAffiliates}/>
+      {addAffiliateModal && <AddAffiliate />}
     </>
   )
 }

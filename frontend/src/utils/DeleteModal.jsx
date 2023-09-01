@@ -13,7 +13,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "30%",
   bgcolor: "background.paper",
-  p: 4.5,
+  p: 4,
 };
 
 
