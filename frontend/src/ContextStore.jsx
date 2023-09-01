@@ -64,6 +64,8 @@ export default function ContextProvider ({ children }) {
   const [offers, setOffers] = useState([])
   const [subscribers, setSubscribers] = useState([])
   const [selection, setSelection] = useState(null)
+  const [deleteModal, setDeleteModal] = useState(false)
+  const [selectFrom, setSelectFrom] = useState('')
 
   const loadAffiliates = async () => {
     request.get(urls.affiliates, setAffiliates, "affiliates")
@@ -85,6 +87,13 @@ export default function ContextProvider ({ children }) {
     affiliates: affiliates,
     offers: offers,
     subscribers: subscribers,
+
+    selection: selection,
+    deleteModal: deleteModal,
+    selectFrom: selectFrom,
+    setSelection: setSelection,
+    setDeleteModal: setDeleteModal,
+    setSelectFrom: setSelectFrom,
 
     setAffiliates: setAffiliates,
     setOffers: setOffers,

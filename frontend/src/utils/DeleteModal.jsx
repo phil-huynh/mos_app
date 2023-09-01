@@ -3,7 +3,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Paper from "@mui/material/Paper";
 import Fade from "@mui/material/Fade";
 import CloseIcon from '@mui/icons-material/Close';
-import { useStore } from "./ContextStore.jsx";
+import { useStore } from "../ContextStore.jsx";
 
 
 const style = {
@@ -19,17 +19,19 @@ const style = {
 
 export default function DeleteModal({url, callback, setSelection, item}) {
 
-  const { request, deleteModal, setDeleteModal } = useStore()
+  const { request, deleteModal, setDeleteModal, setSelectFrom } = useStore()
 
 
   const deleteEntry = async () => {
     setDeleteModal(false)
     await request.delete(url, callback)
     setSelection(null)
+    setSelectFrom('')
   }
 
   const close = () => {
     setSelection(null)
+    setSelectFrom('')
     setDeleteModal(false)
   }
 

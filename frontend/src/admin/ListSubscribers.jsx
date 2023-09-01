@@ -1,20 +1,51 @@
 import { useState, useEffect } from "react"
 import { useStore } from "../ContextStore"
+import DeleteModal from "../utils/DeleteModal"
 
 export default function SubscriberList () {
 
-  const { subscribers, loadSubscribers, urls, request } = useStore()
+  const {
+    subscribers,
+    loadSubscribers,
+    urls,
+    request,
+    selection,
+    setSelection,
+    deleteModal,
+    setDeleteModal,
+    setSelectFrom,
+    selectFrom
+  } = useStore()
 
-  const deleteSubscriber = async (id) => {
-    await request.delete(urls.subscriber(id), loadSubscribers)
-  }
+  // const deleteSubscriber = async (id) => {
+  //   await request.delete(urls.subscriber(id), loadSubscribers)
+  // }
 
   useEffect(() => {
     loadSubscribers()
   }, [])
 
+  useEffect(() => {
+    selection && setDeleteModal(true)
+  }, [selection])
+
+  const select = (subscriber) => {
+    setSelection(subscriber)
+    setSelectFrom("subscriber")
+  }
+
   return (
     <>
+      {deleteModal && selectFrom === "subscriber" ?
+        <DeleteModal
+          url={urls.subscriber(selection.id)}
+          callback={loadSubscribers}
+          setSelection={setSelection}
+          item={`${selection.email}`}
+        />
+        :
+        null
+      }
       <div className="form-box" style={{width: "50%"}}>
         <h4>Subscribers</h4>
       </div>
@@ -32,7 +63,7 @@ export default function SubscriberList () {
                 <td >{subscriber.email}</td>
                 <td >{subscriber.first_name}</td>
                 <td >
-                  <button onClick={()=>{deleteSubscriber(subscriber.id)}}>Delete</button>
+                  <button onClick={()=>{select(subscriber)}}>Delete</button>
                 </td>
               </tr>
             ))}

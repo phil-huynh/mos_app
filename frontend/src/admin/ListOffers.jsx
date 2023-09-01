@@ -1,21 +1,52 @@
 import { useState, useEffect } from "react"
 import AddOffer from "./AddOffer"
 import { useStore } from "../ContextStore"
+import DeleteModal from "../utils/DeleteModal"
 
 export default function OfferList () {
 
-  const { offers, loadOffers, urls, request } = useStore()
+  const {
+    offers,
+    loadOffers,
+    urls,
+    request,
+    selection,
+    setSelection,
+    deleteModal,
+    setDeleteModal,
+    setSelectFrom,
+    selectFrom
+  } = useStore()
 
-  const deleteOffer = async (id) => {
-    await request.delete(urls.offer(id), loadOffers)
-  }
+  // const deleteOffer = async (id) => {
+  //   await request.delete(urls.offer(id), loadOffers)
+  // }
 
   useEffect(() => {
     loadOffers()
   }, [])
 
+  useEffect(() => {
+    selection && setDeleteModal(true)
+  }, [selection])
+
+  const select = (offer) => {
+    setSelection(offer)
+    setSelectFrom("offer")
+  }
+
   return (
     <>
+      {deleteModal && selectFrom === "offer" ?
+        <DeleteModal
+          url={urls.offer(selection.id)}
+          callback={loadOffers}
+          setSelection={setSelection}
+          item={`${selection.title} offer`}
+        />
+        :
+        null
+      }
       <div className="form-box" style={{width: "50%"}}>
         <h4>Offers</h4>
       </div>
@@ -35,7 +66,7 @@ export default function OfferList () {
                 <td >{offer.description}</td>
                 <td >{`$ ${offer.price}`}</td>
                 <td >
-                  <button onClick={()=>{deleteOffer(offer.id)}}>Delete</button>
+                  <button onClick={()=>select(offer)}>Delete</button>
                 </td>
               </tr>
             ))}

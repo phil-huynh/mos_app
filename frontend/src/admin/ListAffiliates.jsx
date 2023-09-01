@@ -1,21 +1,52 @@
 import { useState, useEffect } from "react"
 import AddAffiliate from "./AddAffiliate"
 import { useStore } from "../ContextStore"
+import DeleteModal from "../utils/DeleteModal"
 
 export default function AffiliateList () {
 
-  const { affiliates, loadAffiliates, urls, request } = useStore()
+  const {
+    affiliates,
+    loadAffiliates,
+    urls,
+    request,
+    selection,
+    setSelection,
+    deleteModal,
+    setDeleteModal,
+    setSelectFrom,
+    selectFrom
+  } = useStore()
 
-  const deleteAffiliate = async (id) => {
-    await request.delete(urls.affiliate(id), loadAffiliates)
-  }
+  // const deleteAffiliate = async (id) => {
+  //   await request.delete(urls.affiliate(id), loadAffiliates)
+  // }
 
   useEffect(() => {
     loadAffiliates()
   }, [])
 
+  useEffect(() => {
+    selection && setDeleteModal(true)
+  }, [selection])
+
+  const select = (affiliate) => {
+    setSelection(affiliate)
+    setSelectFrom("affiliate")
+  }
+
   return (
     <>
+      {deleteModal && selectFrom === "affiliate" ?
+        <DeleteModal
+          url={urls.affiliate(selection.id)}
+          callback={loadAffiliates}
+          setSelection={setSelection}
+          item={`${selection.company}`}
+          />
+        :
+        null
+      }
       <div className="form-box" style={{width: "50%"}}>
         <h4>Affiliates</h4>
       </div>
@@ -35,7 +66,7 @@ export default function AffiliateList () {
                 <td >{affiliate.product}</td>
                 <td >{affiliate.link}</td>
                 <td >
-                  <button onClick={()=>{deleteAffiliate(affiliate.id)}}>Delete</button>
+                  <button onClick={()=>{select(affiliate)}}>Delete</button>
                 </td>
               </tr>
             ))}
