@@ -100,13 +100,15 @@ export default function ContextProvider ({ children }) {
 
     addAffiliateModal: addAffiliateModal,
     addOfferModal: addOfferModal,
-    editOfferModal: editOfferModal,
+
     editAffiliateModal: editAffiliateModal,
+    editOfferModal: editOfferModal,
 
     setAddAffiliateModal: setAddAffiliateModal,
-    setAddOfferModal, setAddOfferModal,
-    setEditOfferModal, setEditOfferModal,
+    setAddOfferModal: setAddOfferModal,
+
     setEditAffiliateModal: setEditAffiliateModal,
+    setEditOfferModal: setEditOfferModal,
 
     setAffiliates: setAffiliates,
     setOffers: setOffers,

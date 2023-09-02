@@ -18,14 +18,18 @@ const style = {
 };
 
 
-export default function AddAffiliate() {
+export default function EditAffiliate({ affiliate }) {
 
   const {
     urls,
     request,
     loadAffiliates,
-    addAffiliateModal,
-    setAddAffiliateModal
+    editAffiliateModal,
+    setAddAffiliateModal,
+    setEditOfferModal,
+    setSelection,
+    setSelectFrom,
+    setSelectType
   } = useStore()
 
   const emptyAffiliate = {
@@ -38,15 +42,25 @@ export default function AddAffiliate() {
 
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
 
+  const close = () => {
+    setAddAffiliateModal(false)
+    setSelection(null)
+    setSelectFrom('')
+    setSelectType('')
+  }
+
   const reset = () => {
     setData(emptyAffiliate)
     loadAffiliates()
-    setAddAffiliateModal(false)
+    setEditAffiliateModal(false)
+    setSelection(null)
+    setSelectType('')
+    setSelectFrom('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await request.post(urls.affiliates, data, reset)
+    // await request.post(urls.affiliates, data, reset)
   }
   // const textColor = () => (darkMode ? "white" : "black");
 
@@ -55,7 +69,7 @@ export default function AddAffiliate() {
       <Modal
         aria-labelledby="opportunity-data-card"
         aria-describedby="opportunity-probability-data"
-        open={addAffiliateModal}
+        open={editAffiliateModal}
         // onClose={() => setAddAffiliateModal(false)}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -63,14 +77,14 @@ export default function AddAffiliate() {
           timeout: 500
         }}
       >
-        <Fade in={addAffiliateModal}>
+        <Fade in={editAffiliateModal}>
           <Paper
             sx={style}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>
-              <h2 style={{color: "black"}}>Add an Affiliate</h2>
-              <CloseIcon onClick={() => setAddAffiliateModal(false)} sx={{cursor: "pointer"}}/>
+              <h2 style={{color: "black"}}>{`Edit ${affiliate}`}</h2>
+              <CloseIcon onClick={() => close()} sx={{cursor: "pointer"}}/>
             </div>
             <form className='email-form' id='email-form' onSubmit={handleSubmit}>
             <Grid container direction='column'>
@@ -133,8 +147,8 @@ export default function AddAffiliate() {
                   placeContent: "space-around"
                   }}
                 >
-                <button onClick={() => setAddAffiliateModal(false)}>Cancel</button>
-                <button onClick={handleSubmit}>Add Affiliate</button>
+                <button onClick={() => close()}>Cancel</button>
+                <button onClick={handleSubmit}>Update</button>
               </Grid>
             </Grid>
           </form>

@@ -13,7 +13,6 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  // width: "20%",
   bgcolor: "background.paper",
   p: 4.5,
 };
@@ -44,17 +43,17 @@ export default function EditOffer ({ offer }) {
 
 
   const close = () => {
+    setEditOfferModal(false)
     setSelection(null)
     setSelectFrom('')
     setSelectType('')
-    setDeleteModal(false)
   }
 
 
   const reset = () => {
     setData(emptyOffer)
     loadOffers()
-    setAddOfferModal(false)
+    setEditOfferModal(false)
     setSelection(null)
     setSelectType('')
     setSelectFrom('')
@@ -62,7 +61,7 @@ export default function EditOffer ({ offer }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await request.post(urls.offers, data, reset)
+    // await request.post(urls.offers, data, reset)
   }
 
   return (

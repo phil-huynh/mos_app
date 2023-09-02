@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import AddAffiliate from "./AddAffiliate"
 import { useStore } from "../ContextStore"
 import DeleteModal from "../utils/DeleteModal"
+import EditAffiliate from "./EditAffiliate"
 
 export default function AffiliateList () {
 
@@ -17,7 +18,11 @@ export default function AffiliateList () {
     selectFrom,
     setSelectFrom,
     addAffiliateModal,
-    setAddAffiliateModal
+    setAddAffiliateModal,
+    editAffiliateModal,
+    setEditAffiliateModal,
+    setSelectType,
+    selectType
   } = useStore()
 
   useEffect(() => {
@@ -25,17 +30,19 @@ export default function AffiliateList () {
   }, [])
 
   useEffect(() => {
-    selection && setDeleteModal(true)
+    selection && selectType === 'delete' && setDeleteModal(true)
+    selection && selectType === 'edit' && setEditAffiliateModal(true)
   }, [selection])
 
-  const select = (affiliate) => {
+  const select = (affiliate, type) => {
     setSelection(affiliate)
     setSelectFrom("affiliate")
+    setSelectType(type)
   }
 
   return (
     <>
-      {deleteModal && selectFrom === "affiliate" ?
+      {deleteModal && selectFrom === "affiliate" && selectType === 'delete' ?
         <DeleteModal
           url={urls.affiliate(selection.id)}
           callback={loadAffiliates}
@@ -64,15 +71,20 @@ export default function AffiliateList () {
                 <td >{affiliate.company}</td>
                 <td >{affiliate.product}</td>
                 <td >{affiliate.link}</td>
-                <td >
-                  <button onClick={()=>{select(affiliate)}}>Delete</button>
-                </td>
+                <td ><button onClick={()=>select(affiliate, 'delete')}>Delete</button></td>
+                <td ><button onClick={()=>select(affiliate, 'edit')}>Edit</button></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       {addAffiliateModal && <AddAffiliate />}
+      {editAffiliateModal &&
+        selectFrom === "affiliate" &&
+        selectType === 'edit' &&
+        <EditAffiliate affiliate={`${selection.company}`}/>
+      }
+
     </>
   )
 }
