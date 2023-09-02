@@ -83,7 +83,7 @@ export default function EditAffiliate({ affiliate }) {
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>
-              <h2 style={{color: "black"}}>{`Edit ${affiliate}`}</h2>
+              <h2 style={{color: "black"}}>{`Edit ${affiliate.company}`}</h2>
               <CloseIcon onClick={() => close()} sx={{cursor: "pointer"}}/>
             </div>
             <form className='email-form' id='email-form' onSubmit={handleSubmit}>
@@ -104,7 +104,7 @@ export default function EditAffiliate({ affiliate }) {
                     }}>
                       <input
                         type='text'
-                        placeholder='company'
+                        placeholder={affiliate.company}
                         value={data.company}
                         name="company"
                         onChange={handleInput}
@@ -118,7 +118,7 @@ export default function EditAffiliate({ affiliate }) {
                     }}>
                         <input
                           type='text'
-                          placeholder='product'
+                          placeholder={affiliate.product}
                           value={data.product}
                           name="product"
                           onChange={handleInput}
@@ -132,7 +132,7 @@ export default function EditAffiliate({ affiliate }) {
                     }}>
                         <input
                           type='text'
-                          placeholder='link'
+                          placeholder={affiliate.link}
                           value={data.link}
                           name="link"
                           onChange={handleInput}

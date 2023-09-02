@@ -82,7 +82,7 @@ export default function AffiliateList () {
       {editAffiliateModal &&
         selectFrom === "affiliate" &&
         selectType === 'edit' &&
-        <EditAffiliate affiliate={`${selection.company}`}/>
+        <EditAffiliate affiliate={selection}/>
       }
 
     </>

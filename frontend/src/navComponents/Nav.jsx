@@ -33,7 +33,7 @@ export default function Nav({matches, handleSideBar}) {
             <NavLink className="nav-link" to="/free">Free!</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/admin">Admin</NavLink>
+            <NavLink className="nav-link" to="/thatswhatshesaid">Admin</NavLink>
           </li>
         </ul>
           <ShoppingCartIcon sx={{

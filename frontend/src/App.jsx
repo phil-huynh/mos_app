@@ -66,7 +66,7 @@ function App({blogs, offers, affiliates}) {
             <Route path="free">
               <Route index element={<Free />} />
             </Route>
-            <Route path="admin">
+            <Route path="thatswhatshesaid">
               <Route index element={<AdminMain />} />
             </Route>
           </Routes>

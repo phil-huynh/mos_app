@@ -83,7 +83,7 @@ export default function EditOffer ({ offer }) {
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>
-              <h2 style={{color: "black"}}>{`Edit ${offer}`}</h2>
+              <h2 style={{color: "black"}}>{`Edit ${offer.title}`}</h2>
               <CloseIcon onClick={() => close()} sx={{cursor: "pointer"}}/>
             </div>
             <form className='email-form' id='email-form' onSubmit={handleSubmit}>
@@ -104,7 +104,7 @@ export default function EditOffer ({ offer }) {
                     }}>
                       <input
                         type='text'
-                        placeholder='title'
+                        placeholder={offer.title}
                         value={data.title}
                         name="title"
                         onChange={handleInput}
@@ -118,7 +118,7 @@ export default function EditOffer ({ offer }) {
                     }}>
                         <input
                           type='text'
-                          placeholder='description'
+                          placeholder={offer.description}
                           value={data.description}
                           name="description"
                           onChange={handleInput}
@@ -132,7 +132,7 @@ export default function EditOffer ({ offer }) {
                     }}>
                         <input
                           type='number'
-                          placeholder='price'
+                          placeholder={offer.price}
                           value={data.price}
                           name="price"
                           onChange={handleInput}

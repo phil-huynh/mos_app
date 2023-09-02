@@ -82,7 +82,7 @@ export default function OfferList () {
       {editOfferModal &&
         selectFrom === "offer" &&
         selectType === 'edit' &&
-        <EditOffer offer={`${selection.title} offer`}/>
+        <EditOffer offer={selection}/>
       }
     </>
   )
