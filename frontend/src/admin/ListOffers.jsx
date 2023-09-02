@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import AddOffer from "./AddOffer"
 import { useStore } from "../ContextStore"
 import DeleteModal from "../utils/DeleteModal"
+import EditOffer from "./EditOffer"
 
 export default function OfferList () {
 
@@ -17,7 +18,11 @@ export default function OfferList () {
     selectFrom,
     setSelectFrom,
     addOfferModal,
-    setAddOfferModal
+    setAddOfferModal,
+    editOfferModal,
+    setEditOfferModal,
+    setSelectType,
+    selectType
   } = useStore()
 
   useEffect(() => {
@@ -25,17 +30,19 @@ export default function OfferList () {
   }, [])
 
   useEffect(() => {
-    selection && setDeleteModal(true)
+    selection && selectType === 'delete' && setDeleteModal(true)
+    selection && selectType === 'edit' && setEditOfferModal(true)
   }, [selection])
 
-  const select = (offer) => {
+  const select = (offer, type) => {
     setSelection(offer)
     setSelectFrom("offer")
+    setSelectType(type)
   }
 
   return (
     <>
-      {deleteModal && selectFrom === "offer" ?
+      {deleteModal && selectFrom === "offer" && selectType === 'delete' ?
         <DeleteModal
           url={urls.offer(selection.id)}
           callback={loadOffers}
@@ -45,7 +52,6 @@ export default function OfferList () {
         :
         null
       }
-      {}
       <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
         <div className="form-box" style={{width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
           <h4>Offers</h4>
@@ -65,15 +71,19 @@ export default function OfferList () {
                 <td >{offer.title}</td>
                 <td >{offer.description}</td>
                 <td >{`$ ${offer.price}`}</td>
-                <td >
-                  <button onClick={()=>select(offer)}>Delete</button>
-                </td>
+                <td ><button onClick={()=>select(offer, 'delete')}>Delete</button></td>
+                <td ><button onClick={()=>select(offer, 'edit')}>Edit</button></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       {addOfferModal && <AddOffer />}
+      {editOfferModal &&
+        selectFrom === "offer" &&
+        selectType === 'edit' &&
+        <EditOffer offer={`${selection.title} offer`}/>
+      }
     </>
   )
 }

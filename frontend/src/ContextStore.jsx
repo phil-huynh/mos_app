@@ -66,6 +66,9 @@ export default function ContextProvider ({ children }) {
   const [selectFrom, setSelectFrom] = useState('')
   const [addAffiliateModal, setAddAffiliateModal] = useState(false)
   const [addOfferModal, setAddOfferModal] = useState(false)
+  const [editOfferModal, setEditOfferModal] = useState(false)
+  const [editAffiliateModal, setEditAffiliateModal] = useState(false)
+  const [selectType, setSelectType] = useState('')
 
 
   const loadAffiliates = async () => {
@@ -92,12 +95,18 @@ export default function ContextProvider ({ children }) {
     selection: selection,
     deleteModal: deleteModal,
     selectFrom: selectFrom,
+    selectType: selectType,
+
 
     addAffiliateModal: addAffiliateModal,
     addOfferModal: addOfferModal,
+    editOfferModal: editOfferModal,
+    editAffiliateModal: editAffiliateModal,
 
     setAddAffiliateModal: setAddAffiliateModal,
     setAddOfferModal, setAddOfferModal,
+    setEditOfferModal, setEditOfferModal,
+    setEditAffiliateModal: setEditAffiliateModal,
 
     setAffiliates: setAffiliates,
     setOffers: setOffers,
@@ -106,6 +115,7 @@ export default function ContextProvider ({ children }) {
     setSelection: setSelection,
     setDeleteModal: setDeleteModal,
     setSelectFrom: setSelectFrom,
+    setSelectType: setSelectType,
 
     loadAffiliates: loadAffiliates,
     loadOffers: loadOffers,

@@ -73,13 +73,6 @@ export default function AddOffer () {
             </div>
             <form className='email-form' id='email-form' onSubmit={handleSubmit}>
             <Grid container direction='column'>
-              {/* <Grid item
-                sx={{
-                  display: "flex",
-                  justifyContent: "center"
-                }}>
-              <h2>Add Offer</h2>
-              </Grid> */}
               <Grid item>
                 <Grid container
                   sx={{

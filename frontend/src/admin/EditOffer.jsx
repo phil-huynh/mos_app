@@ -13,64 +13,79 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  // width: "20%",
   bgcolor: "background.paper",
   p: 4.5,
 };
 
-
-export default function AddAffiliate() {
+export default function EditOffer ({ offer }) {
 
   const {
     urls,
     request,
-    loadAffiliates,
-    addAffiliateModal,
-    setAddAffiliateModal
+    loadOffers,
+    editOfferModal,
+    setAddOfferModa,
+    setEditOfferModal,
+    setSelection,
+    setSelectFrom,
+    setSelectType
   } = useStore()
 
-  const emptyAffiliate = {
-    company: '',
-    product: '',
-    link: ''
+  const emptyOffer = {
+    title: '',
+    description: '',
+    price: 0
   }
 
-  const [data, setData] = useState(emptyAffiliate)
+  const [data, setData] = useState(emptyOffer)
 
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
 
+
+  const close = () => {
+    setSelection(null)
+    setSelectFrom('')
+    setSelectType('')
+    setDeleteModal(false)
+  }
+
+
   const reset = () => {
-    setData(emptyAffiliate)
-    loadAffiliates()
-    setAddAffiliateModal(false)
+    setData(emptyOffer)
+    loadOffers()
+    setAddOfferModal(false)
+    setSelection(null)
+    setSelectType('')
+    setSelectFrom('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await request.post(urls.affiliates, data, reset)
+    await request.post(urls.offers, data, reset)
   }
-  // const textColor = () => (darkMode ? "white" : "black");
 
   return (
     <div>
       <Modal
         aria-labelledby="opportunity-data-card"
         aria-describedby="opportunity-probability-data"
-        open={addAffiliateModal}
-        // onClose={() => setAddAffiliateModal(false)}
+        open={editOfferModal}
+        // onClose={() => setAddManufacturerModal(false)}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500
         }}
       >
-        <Fade in={addAffiliateModal}>
+        <Fade in={editOfferModal}>
           <Paper
             sx={style}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>
-              <h2 style={{color: "black"}}>Add an Affiliate</h2>
-              <CloseIcon onClick={() => setAddAffiliateModal(false)} sx={{cursor: "pointer"}}/>
+              <h2 style={{color: "black"}}>{`Edit ${offer}`}</h2>
+              <CloseIcon onClick={() => close()} sx={{cursor: "pointer"}}/>
             </div>
             <form className='email-form' id='email-form' onSubmit={handleSubmit}>
             <Grid container direction='column'>
@@ -90,9 +105,9 @@ export default function AddAffiliate() {
                     }}>
                       <input
                         type='text'
-                        placeholder='company'
-                        value={data.company}
-                        name="company"
+                        placeholder='title'
+                        value={data.title}
+                        name="title"
                         onChange={handleInput}
                       />
                   </Grid>
@@ -104,9 +119,9 @@ export default function AddAffiliate() {
                     }}>
                         <input
                           type='text'
-                          placeholder='product'
-                          value={data.product}
-                          name="product"
+                          placeholder='description'
+                          value={data.description}
+                          name="description"
                           onChange={handleInput}
                         />
                   </Grid>
@@ -117,10 +132,10 @@ export default function AddAffiliate() {
                       marginY: "2rem",
                     }}>
                         <input
-                          type='text'
-                          placeholder='link'
-                          value={data.link}
-                          name="link"
+                          type='number'
+                          placeholder='price'
+                          value={data.price}
+                          name="price"
                           onChange={handleInput}
                         />
                   </Grid>
@@ -130,11 +145,11 @@ export default function AddAffiliate() {
                 item
                 sx={{
                   display: "flex",
-                  placeContent: "space-around"
+                  justifyContent: "space-around"
                   }}
                 >
-                <button onClick={() => setAddAffiliateModal(false)}>Cancel</button>
-                <button onClick={handleSubmit}>Add Affiliate</button>
+                <button onClick={() => close()}>Cancel</button>
+                <button onClick={handleSubmit}>Update</button>
               </Grid>
             </Grid>
           </form>
