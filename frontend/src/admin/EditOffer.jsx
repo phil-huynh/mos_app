@@ -108,13 +108,13 @@ export default function EditOffer ({ offer }) {
                       placeItems: "center",
                       marginY: "2rem",
                     }}>
-                        <input
-                          type='text'
-                          placeholder={offer.description}
-                          value={data.description}
-                          name="description"
-                          onChange={handleInput}
-                        />
+                      <input
+                        type='text'
+                        placeholder={offer.description}
+                        value={data.description}
+                        name="description"
+                        onChange={handleInput}
+                      />
                   </Grid>
                   <Grid item
                     sx={{
@@ -122,13 +122,13 @@ export default function EditOffer ({ offer }) {
                       placeItems: "center",
                       marginY: "2rem",
                     }}>
-                        <input
-                          type='text'
-                          placeholder={offer.price}
-                          value={data.price}
-                          name="price"
-                          onChange={handleInput}
-                        />
+                      <input
+                        type='text'
+                        placeholder={offer.price}
+                        value={data.price}
+                        name="price"
+                        onChange={handleInput}
+                      />
                   </Grid>
                 </Grid>
               </Grid>

@@ -92,13 +92,13 @@ export default function AddOffer () {
                       placeItems: "center",
                       marginY: "2rem",
                     }}>
-                        <input
-                          type='text'
-                          placeholder='description'
-                          value={data.description}
-                          name="description"
-                          onChange={handleInput}
-                        />
+                      <input
+                        type='text'
+                        placeholder='description'
+                        value={data.description}
+                        name="description"
+                        onChange={handleInput}
+                      />
                   </Grid>
                   <Grid item
                     sx={{
@@ -106,13 +106,13 @@ export default function AddOffer () {
                       placeItems: "center",
                       marginY: "2rem",
                     }}>
-                        <input
-                          type='number'
-                          placeholder='price'
-                          value={data.price}
-                          name="price"
-                          onChange={handleInput}
-                        />
+                      <input
+                        type='number'
+                        placeholder='price'
+                        value={data.price}
+                        name="price"
+                        onChange={handleInput}
+                      />
                   </Grid>
                 </Grid>
               </Grid>

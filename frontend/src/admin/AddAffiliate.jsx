@@ -92,13 +92,13 @@ export default function AddAffiliate() {
                       placeItems: "center",
                       marginY: "2rem",
                     }}>
-                        <input
-                          type='text'
-                          placeholder='product'
-                          value={data.product}
-                          name="product"
-                          onChange={handleInput}
-                        />
+                      <input
+                        type='text'
+                        placeholder='product'
+                        value={data.product}
+                        name="product"
+                        onChange={handleInput}
+                      />
                   </Grid>
                   <Grid item
                     sx={{
@@ -106,13 +106,13 @@ export default function AddAffiliate() {
                       placeItems: "center",
                       marginY: "2rem",
                     }}>
-                        <input
-                          type='text'
-                          placeholder='link'
-                          value={data.link}
-                          name="link"
-                          onChange={handleInput}
-                        />
+                      <input
+                        type='text'
+                        placeholder='link'
+                        value={data.link}
+                        name="link"
+                        onChange={handleInput}
+                      />
                   </Grid>
                 </Grid>
               </Grid>
