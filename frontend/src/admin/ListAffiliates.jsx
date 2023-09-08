@@ -4,6 +4,7 @@ import { useStore } from "../ContextStore"
 import DeleteModal from "../utils/DeleteModal"
 import EditAffiliate from "./EditAffiliate"
 
+
 export default function AffiliateList () {
 
   const {
@@ -52,8 +53,21 @@ export default function AffiliateList () {
         :
         null
       }
-      <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
-        <div className="form-box" style={{width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
+      <div
+        className="form-box"
+        style={{
+          width: "80%",
+          display: "flex",
+          flexDirection: "column"
+        }}>
+        <div
+          className="form-box"
+          style={{
+            width: "50%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around"
+          }}>
           <h4>Affiliates</h4>
           <button onClick={() => setAddAffiliateModal(true)}>Add Affiliate</button>
         </div>
@@ -71,8 +85,20 @@ export default function AffiliateList () {
                 <td >{affiliate.company}</td>
                 <td >{affiliate.product}</td>
                 <td >{affiliate.link}</td>
-                <td ><button onClick={()=>select(affiliate, 'delete')}>Delete</button></td>
-                <td ><button onClick={()=>select(affiliate, 'edit')}>Edit</button></td>
+                <td >
+                  <button
+                    onClick={()=>select(affiliate, 'delete')}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td >
+                  <button
+                    onClick={()=>select(affiliate, 'edit')}
+                  >
+                    Edit
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

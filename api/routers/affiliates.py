@@ -62,3 +62,18 @@ def remove_affiliate(
         queries: AffiliateQueries = Depends()
     ):
     return Message(**queries.delete_affiliate(id))
+
+
+@router.put("/affiliates/{id}")
+def update_offer(
+        id: str,
+        info: AffiliateIn,
+        queries: AffiliateQueries = Depends()
+    ):
+    info_dict = {
+        "company": info.company if info.company else None,
+        "product": info.product if info.product else None,
+        "link": info.link if info.link else None
+    }
+    info_dict = {key: val for key, val in info_dict.items() if val}
+    return AffiliateOut(**queries.update_affiliate(id, info_dict))

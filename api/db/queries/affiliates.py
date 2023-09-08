@@ -1,12 +1,14 @@
 from ..db_connect import *
 
 class AffiliateQueries:
+
     def get_all_affiliates(self):
         db = client[dbname]
         result = list(db.affiliates.find())
         for value in result:
             value["id"] = str(value["_id"])
         return {"affiliates": result}
+
 
     def find_affiliate(self, id):
         if isinstance(id, str):
@@ -17,6 +19,7 @@ class AffiliateQueries:
             response["id"] = str(response["_id"])
         return response
 
+
     def add_affiliate(self, data):
         db = client[dbname]
         data = data.dict()
@@ -25,6 +28,7 @@ class AffiliateQueries:
             result = self.find_affiliate(response.inserted_id)
             result["id"] = str(result["_id"])
         return result
+
 
     def delete_affiliate(self, id):
         id = ObjectId(id)
@@ -37,3 +41,13 @@ class AffiliateQueries:
         if not result:
             return {"message": "Success!"}
         return {"message": "Could not delete affiliate"}
+
+
+    def update_affiliate(self, id, info):
+        id = ObjectId(id)
+        db = client[dbname]
+        id_exists = self.find_affiliate(id)
+        if not id_exists:
+            return {"message": "This affiliate does not exist"}
+        db.affiliates.update_one({"_id": id},{"$set":info})
+        return self.find_affiliate(id)

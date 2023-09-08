@@ -43,7 +43,7 @@ export default function DeleteModal({url, callback, setSelection, item}) {
         aria-labelledby="opportunity-data-card"
         aria-describedby="opportunity-probability-data"
         open={deleteModal}
-        // onClose={() => setAddManufacturerModal(false)}
+        onClose={() => close()}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{

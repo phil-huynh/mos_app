@@ -8,16 +8,6 @@ import Grid from "@mui/material/Grid";
 import { useStore } from '../ContextStore';
 
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  p: 4.5,
-};
-
-
 export default function EditAffiliate({ affiliate }) {
 
   const {
@@ -25,11 +15,11 @@ export default function EditAffiliate({ affiliate }) {
     request,
     loadAffiliates,
     editAffiliateModal,
-    setAddAffiliateModal,
-    setEditOfferModal,
+    setEditAffiliateModal,
     setSelection,
     setSelectFrom,
-    setSelectType
+    setSelectType,
+    modalStyle
   } = useStore()
 
   const emptyAffiliate = {
@@ -43,7 +33,7 @@ export default function EditAffiliate({ affiliate }) {
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
 
   const close = () => {
-    setAddAffiliateModal(false)
+    setEditAffiliateModal(false)
     setSelection(null)
     setSelectFrom('')
     setSelectType('')
@@ -52,17 +42,13 @@ export default function EditAffiliate({ affiliate }) {
   const reset = () => {
     setData(emptyAffiliate)
     loadAffiliates()
-    setEditAffiliateModal(false)
-    setSelection(null)
-    setSelectType('')
-    setSelectFrom('')
+    close()
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // await request.post(urls.affiliates, data, reset)
+    await request.put(urls.affiliate(affiliate.id), data, reset)
   }
-  // const textColor = () => (darkMode ? "white" : "black");
 
   return (
     <div>
@@ -79,7 +65,7 @@ export default function EditAffiliate({ affiliate }) {
       >
         <Fade in={editAffiliateModal}>
           <Paper
-            sx={style}
+            sx={modalStyle}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>

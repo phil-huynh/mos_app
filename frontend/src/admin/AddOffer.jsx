@@ -8,16 +8,6 @@ import Grid from "@mui/material/Grid";
 import { useStore } from '../ContextStore';
 
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  // width: "20%",
-  bgcolor: "background.paper",
-  p: 4.5,
-};
-
 export default function AddOffer () {
 
   const {
@@ -25,7 +15,8 @@ export default function AddOffer () {
     request,
     loadOffers,
     addOfferModal,
-    setAddOfferModal
+    setAddOfferModal,
+    modalStyle
   } = useStore()
 
   const emptyOffer = {
@@ -55,7 +46,7 @@ export default function AddOffer () {
         aria-labelledby="opportunity-data-card"
         aria-describedby="opportunity-probability-data"
         open={addOfferModal}
-        // onClose={() => setAddManufacturerModal(false)}
+        // onClose={() => setAddOfferModal(false)}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -64,7 +55,7 @@ export default function AddOffer () {
       >
         <Fade in={addOfferModal}>
           <Paper
-            sx={style}
+            sx={modalStyle}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>

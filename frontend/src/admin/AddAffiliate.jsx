@@ -8,16 +8,6 @@ import Grid from "@mui/material/Grid";
 import { useStore } from '../ContextStore';
 
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  p: 4.5,
-};
-
-
 export default function AddAffiliate() {
 
   const {
@@ -25,7 +15,8 @@ export default function AddAffiliate() {
     request,
     loadAffiliates,
     addAffiliateModal,
-    setAddAffiliateModal
+    setAddAffiliateModal,
+    modalStyle
   } = useStore()
 
   const emptyAffiliate = {
@@ -48,7 +39,6 @@ export default function AddAffiliate() {
     e.preventDefault()
     await request.post(urls.affiliates, data, reset)
   }
-  // const textColor = () => (darkMode ? "white" : "black");
 
   return (
     <div>
@@ -65,7 +55,7 @@ export default function AddAffiliate() {
       >
         <Fade in={addAffiliateModal}>
           <Paper
-            sx={style}
+            sx={modalStyle}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>

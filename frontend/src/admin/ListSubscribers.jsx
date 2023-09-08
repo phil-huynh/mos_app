@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useStore } from "../ContextStore"
 import DeleteModal from "../utils/DeleteModal"
 
+
 export default function SubscriberList () {
 
   const {
@@ -42,7 +43,13 @@ export default function SubscriberList () {
         :
         null
       }
-      <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
+      <div
+        className="form-box"
+        style={{
+          width: "80%",
+          display: "flex",
+          flexDirection: "column"
+        }}>
         <div className="form-box" style={{width: "50%"}}>
           <h4>Subscribers</h4>
         </div>

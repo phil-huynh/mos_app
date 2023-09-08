@@ -4,6 +4,7 @@ import { useStore } from "../ContextStore"
 import DeleteModal from "../utils/DeleteModal"
 import EditOffer from "./EditOffer"
 
+
 export default function OfferList () {
 
   const {
@@ -52,16 +53,34 @@ export default function OfferList () {
         :
         null
       }
-      <div className="form-box" style={{width: "80%", display: "flex", flexDirection: "column"}}>
-        <div className="form-box" style={{width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
+      <div
+        className="form-box"
+        style={{
+          width: "80%",
+          display: "flex",
+          flexDirection: "column"
+        }}>
+        <div
+          className="form-box"
+          style={{
+            width: "50%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around"
+          }}>
           <h4>Offers</h4>
           <button onClick={()=>setAddOfferModal(true)}>Add Offer</button>
         </div>
-        <table style={{color: "white", width: "100%", padding: "15px"}}>
+        <table
+          style={{
+            color: "white",
+            width: "100%",
+            padding: "15px"
+          }}>
           <thead>
             <tr>
               <td>Title</td>
-              <td>Description</td>
+              <td>Description</td>cx
               <td>Price</td>
             </tr>
           </thead>

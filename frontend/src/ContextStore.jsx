@@ -45,6 +45,7 @@ export default function ContextProvider ({ children }) {
         },
       };
       const response = await fetch(url, fetchConfig);
+      console.log(response)
       if (response.ok) {
         callBack()
       }
@@ -83,6 +84,14 @@ export default function ContextProvider ({ children }) {
     request.get(urls.subscribers, setSubscribers, "subscribers")
   }
 
+  const modalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    bgcolor: "background.paper",
+    p: 4.5,
+  };
 
   const store = {
     urls: urls,
@@ -121,7 +130,9 @@ export default function ContextProvider ({ children }) {
 
     loadAffiliates: loadAffiliates,
     loadOffers: loadOffers,
-    loadSubscribers: loadSubscribers
+    loadSubscribers: loadSubscribers,
+
+    modalStyle: modalStyle
   }
   return (
     <ContextStore.Provider value={store}>

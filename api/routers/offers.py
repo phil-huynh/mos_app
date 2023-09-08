@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Response, Depends, status
+from fastapi import APIRouter, Response, Request, Depends, status
 from pydantic import BaseModel
 from db import OfferQueries
 
@@ -12,6 +12,13 @@ class OfferIn(BaseModel):
 
 
 class OfferOut(BaseModel):
+    id: str
+    title: str
+    description: str
+    price: float
+
+
+class UpdateOfferIn(BaseModel):
     id: str
     title: str
     description: str
@@ -58,7 +65,21 @@ def create_offer(
 )
 def remove_affiliate(
         id: str,
-        response: Response,
         queries: OfferQueries = Depends()
     ):
     return Message(**queries.delete_offer(id))
+
+
+@router.put("/offers/{id}")
+def update_offer(
+        id: str,
+        info: OfferIn,
+        queries: OfferQueries = Depends()
+    ):
+    info_dict = {
+        "title": info.title if info.title else None,
+        "description": info.description if info.description else None,
+        "price": info.price if info.price >= 0 else None
+    }
+    info_dict = {k: v for k, v in info_dict.items() if v or v == 0}
+    return OfferOut(**queries.update_offer(id, info_dict))

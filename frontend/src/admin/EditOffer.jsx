@@ -8,15 +8,6 @@ import Grid from "@mui/material/Grid";
 import { useStore } from '../ContextStore';
 
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  p: 4.5,
-};
-
 export default function EditOffer ({ offer }) {
 
   const {
@@ -24,23 +15,23 @@ export default function EditOffer ({ offer }) {
     request,
     loadOffers,
     editOfferModal,
-    setAddOfferModa,
     setEditOfferModal,
     setSelection,
     setSelectFrom,
-    setSelectType
+    setSelectType,
+    modalStyle
   } = useStore()
 
   const emptyOffer = {
     title: '',
     description: '',
-    price: 0
+    price: ''
   }
 
   const [data, setData] = useState(emptyOffer)
 
   const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
-
+  const isNum = str => !isNaN(str) && !isNaN(parseFloat(str))
 
   const close = () => {
     setEditOfferModal(false)
@@ -49,19 +40,20 @@ export default function EditOffer ({ offer }) {
     setSelectType('')
   }
 
-
   const reset = () => {
     setData(emptyOffer)
     loadOffers()
-    setEditOfferModal(false)
-    setSelection(null)
-    setSelectType('')
-    setSelectFrom('')
+    close()
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // await request.post(urls.offers, data, reset)
+    const body = {
+      title: data.title,
+      description: data.description,
+      price: (data.price && isNum(data.price)) ? Number(data.price) : -1
+    }
+    await request.put(urls.offer(offer.id), body, reset)
   }
 
   return (
@@ -79,7 +71,7 @@ export default function EditOffer ({ offer }) {
       >
         <Fade in={editOfferModal}>
           <Paper
-            sx={style}
+            sx={modalStyle}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "space-between"}}>
@@ -131,7 +123,7 @@ export default function EditOffer ({ offer }) {
                       marginY: "2rem",
                     }}>
                         <input
-                          type='number'
+                          type='text'
                           placeholder={offer.price}
                           value={data.price}
                           name="price"
