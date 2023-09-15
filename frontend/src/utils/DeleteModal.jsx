@@ -47,9 +47,30 @@ export default function DeleteModal({url, callback, setSelection, item}) {
             </div>
             <form id="create-manufacturer-form" style={{marginTop: "1rem"}}>
               <h5 >{`Are you sure you want to delete ${item}?`}</h5>
-              <div style={{display: "flex", justifyContent: "flex-end", marginTop:"2rem"}}>
-              <button className="btn btn-secondary" onClick={() => close()} style={{cursor: "pointer"}}>Cancel</button>
-              <button className="btn btn-danger" onClick={() => deleteEntry()} style={{marginLeft: "2rem", cursor: "pointer"}}>Delete</button>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginTop:"2rem"
+                }}
+              >
+              <button
+                className="btn btn-secondary"
+                onClick={() => close()}
+                style={{cursor: "pointer"}}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteEntry()}
+                style={{
+                  marginLeft: "2rem",
+                  cursor: "pointer"
+                }}
+              >
+                Delete
+              </button>
             </div>
             </form>
           </Paper>

@@ -53,7 +53,13 @@ export default function SubscriberList () {
         <div className="form-box" style={{width: "50%"}}>
           <h4>Subscribers</h4>
         </div>
-        <table style={{color: "white", width: "100%", padding: "15px"}}>
+        <table
+          style={{
+            color: "white",
+            width: "100%",
+            padding: "15px"
+          }}
+        >
           <thead>
             <tr>
               <td>Email</td>

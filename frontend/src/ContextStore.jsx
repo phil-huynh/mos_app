@@ -93,7 +93,6 @@ export default function ContextProvider ({ children }) {
     p: 4.5,
   };
 
-
   const glassCardStyle = {
     minWidth: 275,
     p: 2,
