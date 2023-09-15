@@ -27,7 +27,7 @@ export default function AddOffer () {
 
   const [data, setData] = useState(emptyOffer)
 
-  const handleInput = (e) => setData({...data, [e.target.name]: e.target.value})
+  const handleInput = (e) => {setData({...data, [e.target.name]: e.target.value})}
 
   const reset = () => {
     setData(emptyOffer)

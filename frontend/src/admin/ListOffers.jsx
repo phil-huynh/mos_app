@@ -80,7 +80,7 @@ export default function OfferList () {
           <thead>
             <tr>
               <td>Title</td>
-              <td>Description</td>cx
+              <td>Description</td>
               <td>Price</td>
             </tr>
           </thead>

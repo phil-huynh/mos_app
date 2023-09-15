@@ -8,7 +8,7 @@ export default function Free() {
 
   const { urls, request } = useStore()
 
-  const emptySubscriber = {first_name: '', email: ''}
+  const emptySubscriber = { first_name: '', email: '' }
 
   const [data, setData] = useState(emptySubscriber)
 

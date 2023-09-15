@@ -93,6 +93,25 @@ export default function ContextProvider ({ children }) {
     p: 4.5,
   };
 
+
+  const glassCardStyle = {
+    minWidth: 275,
+    p: 2,
+    boxShadow: 5,
+    color: "white",
+    fontWeight: "700",
+    fontSize: "1.7rem",
+    width: "70%",
+    margin: "3rem",
+    zIndex: "2",
+    padding: "35px",
+    border: "1px solid rgba(139, 139, 139, 0.50)",
+    borderRadius: "20px",
+    backgroundColor: "rgba(16, 16, 16, 0.5)",
+    // boxShadow: "0 0 10px 1px rgba(139, 139, 139, 0.5)",
+    backdropFilter: "blur(10px);",
+  }
+
   const store = {
     urls: urls,
     request: request,
@@ -105,7 +124,7 @@ export default function ContextProvider ({ children }) {
     deleteModal: deleteModal,
     selectFrom: selectFrom,
     selectType: selectType,
-
+    glassCardStyle: glassCardStyle,
 
     addAffiliateModal: addAffiliateModal,
     addOfferModal: addOfferModal,

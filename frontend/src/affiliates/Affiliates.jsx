@@ -26,13 +26,13 @@ export default function Affiliates({matches}) {
       <Grid container spacing={1.5} className='list-container'>
         {affiliates.slice(0, 4).map(affiliate => (
           <Grid item
-          xs={6}
-          sm={4}
-          md={3}
-          lg={2}
-          xl={1}
-          key={affiliate.id}
-          sx={{display: "flex", justifyContent: "center"}}
+            xs={6}
+            sm={4}
+            md={3}
+            lg={2}
+            xl={1}
+            key={affiliate.id}
+            sx={{display: "flex", justifyContent: "center"}}
           >
             <AffiliateCard affiliate={affiliate}/>
           </Grid>

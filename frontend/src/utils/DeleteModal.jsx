@@ -6,20 +6,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useStore } from "../ContextStore.jsx";
 
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "30%",
-  bgcolor: "background.paper",
-  p: 4,
-};
-
-
 export default function DeleteModal({url, callback, setSelection, item}) {
 
-  const { request, deleteModal, setDeleteModal, setSelectFrom } = useStore()
+  const { request, deleteModal, setDeleteModal, setSelectFrom, modalStyle } = useStore()
 
 
   const deleteEntry = async () => {
@@ -34,8 +23,6 @@ export default function DeleteModal({url, callback, setSelection, item}) {
     setSelectFrom('')
     setDeleteModal(false)
   }
-
-  // const textColor = () => (darkMode ? "white" : "black");
 
   return (
     <div>
@@ -52,7 +39,7 @@ export default function DeleteModal({url, callback, setSelection, item}) {
       >
         <Fade in={deleteModal}>
           <Paper
-            sx={style}
+            sx={{...modalStyle, width: "30%"}}
             elevation={10}
           >
             <div style={{display: "flex", flexDirection: "row",  justifyContent: "flex-end"}}>
