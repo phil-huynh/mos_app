@@ -12,7 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
 }
+
 
 a {
   font-weight: 500;
@@ -68,9 +70,9 @@ button:hover {
   color: white;
 }
 
-.container {
+/* .container {
   position: relative;
-}
+} */
 
 .navContainer {
   height: 10rem;
@@ -145,12 +147,12 @@ section {
   align-items: center;
 }
 
-.free-stuff {
+/* .free-stuff {
   height:30vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .form-container {
   display: flex;

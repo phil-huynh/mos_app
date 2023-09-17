@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useStore } from '../ContextStore';
+import styles from "./Free.module.css";
 
 export default function Free() {
 
@@ -23,71 +24,31 @@ export default function Free() {
 
 
   return (
-    <>
-      <div className='form-container'>
-        <div className="form-box">
-
-          <form className='email-form' id='email-form' onSubmit={handleSubmit}>
-            <Grid container direction='column'>
-              <Grid item
-                sx={{
-                  display: "flex",
-                  justifyContent: "center"
-                }}>
-              <h1>Hello</h1>
-              </Grid>
-              <Grid item>
-                <Grid container
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-around"
-                  }}
-                >
-                  <Grid item
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginY: "2rem",
-                    }}>
-                      <input
-                        type='text'
-                        placeholder='first name'
-                        value={data.first_name}
-                        name="first_name"
-                        onChange={handleInput}
-                      />
-                  </Grid>
-                  <Grid item
-                    sx={{
-                      display: "flex",
-                      placeItems: "center",
-                      marginY: "2rem",
-                    }}>
-                        <input
-                          type='text'
-                          placeholder='email'
-                          value={data.email}
-                          name="email"
-                          onChange={handleInput}
-                        />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid
-                item
-                sx={{
-                  display: "flex",
-                  placeContent: "center"
-                  }}
-                >
-                <button onClick={handleSubmit}>Subscribe</button>
-              </Grid>
-            </Grid>
-          </form>
-
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <div className={styles.front}>
+          <div className={styles.content}>
+            <h1>Tools for Transformation</h1>
+            <p>
+            Welcome to Tools for Transformation! I am grateful that you have arrived!
+            Who is this for? Anyone who would like to learn more about stress reduction and chooses the path of transformation through direct personal experience.
+            Teach tools for life transformation - Including, but not limited to using various techniques (methods such as relaxation techniques, breathing and easy stretching techniques) in person and remote for stress management, awareness/mindfulness, growth in consciousness and making life changes from the present moment from a Yogic/Ayurvedic perspective.
+            </p>
+          </div>
+        </div>
+        <div className={styles.back}>
+          <div className={styles.content}>
+            <h1>Contact Me</h1>
+            <form>
+              {/* <!-- <label>Your Name :</label> --> */}
+              <input type="text" name='first_name' onChange={handleInput} value={data.first_name} placeholder="First Name"/>
+              {/* <!-- <label>Your E-mail :</label> --> */}
+              <input type="text" name='email' onChange={handleInput} value={data.email} placeholder="Email"/>
+              <button className={styles.btn} onClick={handleSubmit}>Send</button>
+            </form>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
