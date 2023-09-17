@@ -6,7 +6,7 @@ export default function About() {
       <section>
         <Grid container spacing={1}>
           <Grid item md={12} lg={5} xl={4}>
-            <img src="src/assets/mo_head_shot.jpg" width="375" height="500" className="head_shot"/>
+            <img src="../assets/mo_head_shot.jpg" width="375" height="500" className="head_shot"/>
           </Grid>
           <Grid item md={12} lg={7} xl={8}>
             <h2>Monique is a practicing Teacher/Mentor/Public Speaker focusing on Stress Management & Personal Growth</h2>
